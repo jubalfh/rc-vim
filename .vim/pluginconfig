@@ -1,0 +1,17 @@
+" plugin configuration
+
+" python-mode
+let g:pymode_lint_write = 0
+
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" tagbar
+let g:tagbar_usearrows = 1
+
+" screen
+"let g:ScreenImpl = 'Tmux'
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+" vim: syntax=vim

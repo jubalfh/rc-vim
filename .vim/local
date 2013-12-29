@@ -1,0 +1,17 @@
+" colorschemes and gui
+if has("gui_running")
+    set guifont=Source\ Code\ Pro\ 13
+    set guioptions=acegimrLT
+    set mousehide
+endif
+
+set clipboard+=unnamedplus
+
+nnoremap <silent> <leader>P "*p
+
+augroup filetype_text
+    autocmd!
+    autocmd FileType text,markdown
+    \ setlocal formatoptions+=aw
+augroup END
+" vim: syntax=vim

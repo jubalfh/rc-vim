@@ -1,0 +1,55 @@
+" autocommands
+
+" Filetype detection on the fly
+augroup newFiletypeDetection
+    autocmd CursorMovedI * call CheckFileType()
+augroup END
+
+" Python
+augroup filetype_python
+    autocmd!
+    autocmd FileType python
+    \ set omnifunc=pythoncomplete#Complete |
+    \ set completeopt=menuone,longest,preview |
+    \ let g:SuperTabDefaultCompletionType = "context"
+augroup END
+
+" YAML
+augroup filetype_yaml
+    autocmd!
+    autocmd BufEnter * if getline(1) =~ "%YAML" | setfiletype yaml | endif
+augroup END
+
+" Puppet manifest
+augroup filetype_puppet_manifest
+    autocmd!
+    au FileType puppet
+    \ set expandtab
+augroup END
+
+function CheckFileType()
+    if exists("b:countCheck") == 0
+        let b:countCheck = 0
+    endif
+    let b:countCheck += 1
+    if &filetype == "" && b:countCheck > 40 && b:countCheck < 200
+        filetype detect
+    elseif b:countCheck >= 200 || &filetype != ""
+        autocmd! newFiletypeDetection
+    endif
+endfunction
+
+" Autosave
+augroup autosave_files
+    autocmd!
+    autocmd FocusLost ?* wa
+augroup END
+
+" Vim Indent Guides
+augroup indent_guides
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=8
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
+augroup END
+
+" vim: syntax=vim

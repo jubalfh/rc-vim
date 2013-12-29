@@ -1,0 +1,54 @@
+[ctrlp.vim]
+checkout = git clone https://github.com/kien/ctrlp.vim.git/
+
+[gundo.vim]
+checkout = git clone https://github.com/sjl/gundo.vim.git/
+
+[netrw.vim]
+checkout = git clone https://github.com/vim-scripts/netrw.vim.git/
+
+[pep8]
+checkout = git clone https://github.com/vim-scripts/pep8.git/
+
+[python-mode]
+checkout = git clone https://github.com/klen/python-mode.git/
+
+[supertab]
+checkout = git clone https://github.com/ervandew/supertab.git/
+
+[tagbar]
+checkout = git clone https://github.com/majutsushi/tagbar.git/
+
+[vim-airline]
+checkout = git clone https://github.com/bling/vim-airline.git/
+
+[vim-colors-solarized]
+checkout = git clone https://github.com/altercation/vim-colors-solarized.git/
+
+[vim-fugitive]
+checkout = git clone https://github.com/tpope/vim-fugitive.git/
+
+[vim-ldif]
+checkout = git clone https://github.com/vim-scripts/ldif.vim.git/
+
+[vim-markdown]
+checkout = git clone https://github.com/tpope/vim-markdown.git/
+
+[vim-misc]
+checkout = git clone https://github.com/xolox/vim-misc.git/
+
+[vim-pathogen]
+checkout = git clone https://github.com/tpope/vim-pathogen.git/
+
+[vim-pyref]
+checkout = git clone https://github.com/xolox/vim-pyref.git/
+
+[vim-repeat]
+checkout = git clone https://github.com/tpope/vim-repeat.git/
+
+[vim-surround]
+checkout = git clone https://github.com/tpope/vim-surround.git/
+
+[vim-vinegar]
+checkout = git clone https://github.com/tpope/vim-vinegar.git/
+
