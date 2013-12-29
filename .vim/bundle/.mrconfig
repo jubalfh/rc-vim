@@ -52,3 +52,5 @@ checkout = git clone https://github.com/tpope/vim-surround.git/
 [vim-vinegar]
 checkout = git clone https://github.com/tpope/vim-vinegar.git/
 
+[clam.vim]
+checkout = git clone 'https://github.com/sjl/clam.vim.git/' 'clam.vim'
