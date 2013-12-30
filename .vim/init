@@ -1,6 +1,7 @@
 " initial infection… make it happen
-filetype off
 
+filetype off
+runtime instprep
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -75,14 +76,12 @@ set list
 set listchars=tab:▸\ ,eol:┐
 
 " backups and undo
-set backupdir=~/.vim-backup
-set directory=~/.vim-backup//
-set backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo
 set undolevels=1200
-if exists("+undofile")
-    set undofile
-    set undodir=$HOME/.vim-undo
-endif
+set backup
+set undofile
 
 " colorschemes and gui
 if has("gui_running")
