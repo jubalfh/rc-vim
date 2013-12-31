@@ -1,7 +1,7 @@
 " prepare directory setup
 
 let _vim = $HOME . '/.vim'
-for _subdir in ['backup', 'swap', 'undo']
+for _subdir in ['backup', 'undo']
     let _dir = _vim . '/' . _subdir
     if !isdirectory(_dir)
         call mkdir(_dir, 'p')

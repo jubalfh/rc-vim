@@ -77,10 +77,9 @@ set listchars=tab:▸\ ,eol:┐
 
 " backups and undo
 set backupdir=~/.vim/backup
-set directory=~/.vim/swap//
+set backup
 set undodir=~/.vim/undo
 set undolevels=1200
-set backup
 set undofile
 
 " colorschemes and gui
