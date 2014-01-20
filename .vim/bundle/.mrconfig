@@ -57,3 +57,6 @@ checkout = git clone 'https://github.com/sjl/clam.vim.git/' 'clam.vim'
 
 [vim-accordion]
 checkout = git clone 'https://github.com/mattboehm/vim-accordion.git/' 'vim-accordion'
+
+[vim-multiple-cursors]
+checkout = git clone 'https://github.com/terryma/vim-multiple-cursors.git/' 'vim-multiple-cursors'
