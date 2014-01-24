@@ -60,3 +60,6 @@ checkout = git clone 'https://github.com/mattboehm/vim-accordion.git/' 'vim-acco
 
 [vim-multiple-cursors]
 checkout = git clone 'https://github.com/terryma/vim-multiple-cursors.git/' 'vim-multiple-cursors'
+
+[editorconfig-vim]
+checkout = git clone 'https://github.com/editorconfig/editorconfig-vim.git/' 'editorconfig-vim'
