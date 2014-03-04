@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# requires: git, mr, vcsh
+
+plugin::add() {
+    # TODO: add heuristics to handle:
+    # - full URIs
+    # - different repository types
+    local repo name uri
+    plugin_repo="$1"
+    name="${plugin_repo##*/}"
+    uri="https://github.com/${plugin_repo}.git/"
+    cd "${bundles}"
+    plugin::add::git "${name}" "${uri}"
+}
+
+plugin::add::git() {
+    local name uri
+    read -r name uri <<< "$@"
+    git clone "${uri}" "${name}"
+    plugin::register "${name}"
+}
+
+plugin::add::hg() {
+    local name uri
+    read -r name uri <<< "$@"
+    hg clone "${uri}" "${name}"
+    plugin::register "${name}"
+}
+
+plugin::add::svn() {
+    local name uri
+    read -r name uri <<< "$@"
+    svn co "${uri}" "${name}"
+    plugin::register "${name}"
+}
+
+plugin::register() {
+    local name
+    read -r name <<< "$@"
+    mr register "${name}"
+    vcsh "${cfg_repo}" add .mrconfig
+    vcsh "${cfg_repo}" commit -m "Plugin ${name} registered in .mrconfig."
+    if [[ -n "${vcsh_push}" ]]; then
+        vcsh "${cfg_repo}" push
+    fi
+}
+
+
+plugin::update() {
+    vcsh "${cfg_repo}" pull
+    cd "${bundles}"
+    mr update
+}
+
+plugin::list() {
+    cd "${bundles}"
+    ls -d * | grep -v pathogen
+}
+
+main() {
+    set -e
+    export bundles="$HOME/.vim/bundle"
+    export cfg_repo="rc-vim"
+    action="$1"; shift
+    case "${action}" in
+        add)
+            plugin::add "$1" ;;
+        update)
+            plugin::update ;;
+        list)
+            plugin::list ;;
+    esac
+}
+
+main $@
