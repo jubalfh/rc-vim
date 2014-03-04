@@ -63,3 +63,6 @@ checkout = git clone 'https://github.com/terryma/vim-multiple-cursors.git/' 'vim
 
 [editorconfig-vim]
 checkout = git clone 'https://github.com/editorconfig/editorconfig-vim.git/' 'editorconfig-vim'
+
+[vim-easytags]
+checkout = git clone 'https://github.com/xolox/vim-easytags.git/' 'vim-easytags'
