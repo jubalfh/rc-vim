@@ -69,3 +69,6 @@ checkout = git clone 'https://github.com/xolox/vim-easytags.git/' 'vim-easytags'
 
 [vim-tbone]
 checkout = git clone 'https://github.com/tpope/vim-tbone.git/' 'vim-tbone'
+
+[vim-signify]
+checkout = git clone 'https://github.com/mhinz/vim-signify.git/' 'vim-signify'
