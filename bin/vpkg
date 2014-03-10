@@ -46,8 +46,11 @@ plugin::register() {
     fi
 }
 
-
 plugin::update() {
+    plugin::update::all
+}
+
+plugin::update::all() {
     vcsh "${cfg_repo}" pull
     cd "${bundles}"
     mr update
