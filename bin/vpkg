@@ -46,6 +46,18 @@ plugin::register() {
     fi
 }
 
+plugin::unregister() {
+    local name
+    read -r name <<< "$@"
+    /usr/lib/git-core/git-config --file .mrconfig --remove-section "${name}" || rc=$?
+    rm -rf "${name}"
+    vcsh "${cfg_repo}" add .mrconfig
+    vcsh "${cfg_repo}" commit -m "Plugin ${name} removed and unregistered."
+    if [[ -n "${vcsh_push}" ]]; then
+        vcsh "${cfg_repo}" push
+    fi
+}
+
 plugin::update() {
     plugin::update::all
 }
@@ -68,6 +80,8 @@ main() {
     case "${action}" in
         add)
             plugin::add "$1" ;;
+        del|delete|remove)
+            plugin::unregister "$1" ;;
         update)
             plugin::update ;;
         list)
