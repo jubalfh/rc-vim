@@ -76,5 +76,3 @@ checkout = git clone 'https://github.com/mhinz/vim-signify.git/' 'vim-signify'
 [vim-paren-crosshairs]
 checkout = git clone 'https://github.com/chreekat/vim-paren-crosshairs.git/' 'vim-paren-crosshairs'
 
-[vim-isort]
-checkout = git clone 'https://github.com/vim-scripts/vim-isort.git/' 'vim-isort'
