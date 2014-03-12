@@ -49,7 +49,7 @@ plugin::register() {
 plugin::unregister() {
     local name
     read -r name <<< "$@"
-    /usr/lib/git-core/git-config --file .mrconfig --remove-section "${name}" || rc=$?
+    git config --file .mrconfig --remove-section "${name}" || rc=$?
     rm -rf "${name}"
     vcsh "${cfg_repo}" add .mrconfig
     vcsh "${cfg_repo}" commit -m "Plugin ${name} removed and unregistered."
