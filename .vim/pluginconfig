@@ -14,7 +14,9 @@ let g:tagbar_usearrows = 1
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-" vim: syntax=vim
+let g:airline_detect_whitespace=0
 
 " signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
+
+" vim: syntax=vim
