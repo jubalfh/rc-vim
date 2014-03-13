@@ -79,3 +79,6 @@ checkout = git clone 'https://github.com/chreekat/vim-paren-crosshairs.git/' 'vi
 
 [puppet-syntax-vim]
 checkout = git clone 'https://github.com/puppetlabs/puppet-syntax-vim.git/' 'puppet-syntax-vim'
+
+[detectindent]
+checkout = git clone 'https://github.com/ciaranm/detectindent.git/' 'detectindent'
