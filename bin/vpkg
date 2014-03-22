@@ -12,27 +12,32 @@ plugin::add() {
     uri="https://github.com/${plugin_repo}.git/"
     cd "${bundles}"
     plugin::add::git "${name}" "${uri}"
+    plugin::register "${name}"
 }
 
 plugin::add::git() {
     local name uri
     read -r name uri <<< "$@"
     git clone "${uri}" "${name}"
-    plugin::register "${name}"
 }
 
 plugin::add::hg() {
     local name uri
     read -r name uri <<< "$@"
     hg clone "${uri}" "${name}"
-    plugin::register "${name}"
 }
 
 plugin::add::svn() {
     local name uri
     read -r name uri <<< "$@"
     svn co "${uri}" "${name}"
-    plugin::register "${name}"
+}
+
+plugin::delete() {
+    local name
+    read -r name <<< "$@"
+    [[ -d "${name}" ]] && rm -rf "${name}"
+    plugin::unregister "${name}"
 }
 
 plugin::register() {
@@ -49,10 +54,9 @@ plugin::register() {
 plugin::unregister() {
     local name
     read -r name <<< "$@"
-    git config --file .mrconfig --remove-section "${name}" || rc=$?
-    rm -rf "${name}"
+    git config --file .mrconfig --remove-section "${name}" || true
     vcsh "${cfg_repo}" add .mrconfig
-    vcsh "${cfg_repo}" commit -m "Plugin ${name} removed and unregistered."
+    vcsh "${cfg_repo}" commit -m "Plugin ${name} unregistered from .mrconfig."
     if [[ -n "${vcsh_push}" ]]; then
         vcsh "${cfg_repo}" push
     fi
@@ -81,7 +85,7 @@ main() {
         add)
             plugin::add "$1" ;;
         del|delete|remove)
-            plugin::unregister "$1" ;;
+            plugin::delete "$1" ;;
         update)
             plugin::update ;;
         list)
