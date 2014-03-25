@@ -82,3 +82,6 @@ checkout = git clone 'https://github.com/puppetlabs/puppet-syntax-vim.git/' 'pup
 
 [detectindent]
 checkout = git clone 'https://github.com/ciaranm/detectindent.git/' 'detectindent'
+
+[GoldenView.Vim]
+checkout = git clone 'https://github.com/zhaocai/GoldenView.Vim.git/' 'GoldenView.Vim'
