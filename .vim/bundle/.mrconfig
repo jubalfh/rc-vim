@@ -88,3 +88,6 @@ checkout = git clone 'https://github.com/zhaocai/GoldenView.Vim.git/' 'GoldenVie
 
 [vim-dispatch]
 checkout = git clone 'https://github.com/tpope/vim-dispatch.git/' 'vim-dispatch'
+
+[vim-pencil]
+checkout = git clone 'https://github.com/reedes/vim-pencil.git/' 'vim-pencil'
