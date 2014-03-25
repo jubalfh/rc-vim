@@ -90,6 +90,8 @@ main() {
             plugin::update ;;
         list)
             plugin::list ;;
+        push)
+            vcsh push ;;
     esac
 }
 
