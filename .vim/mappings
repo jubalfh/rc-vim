@@ -1,9 +1,9 @@
 " key mappings
 
-let mapleader = ","
+let mapleader = "\<Space>"
 let g:pep8_map='<leader>8'
 
-nnoremap <silent> <leader><space> :noh<CR>
+nmap <silent> <leader><space> V
 
 nnoremap <silent> <leader>td <Plug>TaskList
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
