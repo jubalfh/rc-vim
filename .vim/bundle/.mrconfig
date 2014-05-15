@@ -1,3 +1,8 @@
+[DEFAULT]
+git_update = 
+    git pull
+    git submodule update --recursive
+
 [ctrlp.vim]
 checkout = git clone https://github.com/kien/ctrlp.vim.git/
 

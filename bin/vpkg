@@ -2,6 +2,14 @@
 
 # requires: git, mr, vcsh
 
+mr() {
+   command -p mr -t "$@"
+}
+
+initool() {
+   command git --file .mrconfig "$@"
+}
+
 plugin::add() {
     # TODO: add heuristics to handle:
     # - full URIs
@@ -18,7 +26,7 @@ plugin::add() {
 plugin::add::git() {
     local name uri
     read -r name uri <<< "$@"
-    git clone "${uri}" "${name}"
+    git clone --recursive "${uri}" "${name}"
 }
 
 plugin::add::hg() {
@@ -54,7 +62,7 @@ plugin::register() {
 plugin::unregister() {
     local name
     read -r name <<< "$@"
-    git config --file .mrconfig --remove-section "${name}" || true
+    initool --remove-section "${name}" || true
     vcsh "${cfg_repo}" add .mrconfig
     vcsh "${cfg_repo}" commit -m "Plugin ${name} unregistered from .mrconfig."
     if [[ -n "${vcsh_push}" ]]; then
@@ -68,7 +76,7 @@ plugin::update() {
 
 plugin::update::all() {
     vcsh "${cfg_repo}" pull
-    mr update
+    mr -j4 update
 }
 
 plugin::list() {
