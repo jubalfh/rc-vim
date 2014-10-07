@@ -11,7 +11,7 @@ endfor
 " grab the plugins
 if !filereadable(_vim . '/bundle/.init')
     setlocal buftype=nofile
-    let _pipeline = 'cd ' . _vim . '/bundle && mr update && touch .init'
+    let _pipeline = 'cd ' . _vim . '/bundle && mr -t update && touch .init'
     let _stdout = system(_pipeline)
     call append(0, split(_stdout, '\v\n'))
     unlet _pipeline
