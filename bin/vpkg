@@ -3,7 +3,7 @@
 # requires: git, mr, vcsh
 
 mr() {
-   command -p mr -t "$@"
+   command mr "$@"
 }
 
 initool() {
@@ -83,10 +83,20 @@ plugin::list() {
     ls -d * | grep -v pathogen
 }
 
+vpkg::prep() {
+    [[ -f "$HOME/.mrtrust" ]] || touch "$HOME/.mrtrust"
+    grep -q "${bundles}/.mrconfig" "$HOME/.mrtrust" || \
+        echo "${bundles}/.mrconfig" >> "$HOME/.mrtrust"
+}
+
+
 main() {
     set -e
+
     export bundles="$HOME/.vim/bundle"
     export cfg_repo="rc-vim"
+    vpkg::prep
+
     cd "${bundles}"
     action="$1"; shift
     case "${action}" in
