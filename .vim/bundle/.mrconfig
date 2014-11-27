@@ -108,3 +108,6 @@ checkout = git clone 'https://github.com/ConradIrwin/vim-bracketed-paste.git/' '
 
 [vim-adjustscroll]
 checkout = git clone 'https://github.com/dbakker/vim-adjustscroll.git/' 'vim-adjustscroll'
+
+[vimfiler.vim]
+checkout = git clone 'https://github.com/shougo/vimfiler.vim.git/' 'vimfiler.vim'
