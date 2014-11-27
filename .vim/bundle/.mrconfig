@@ -105,3 +105,6 @@ checkout = git clone 'https://github.com/chase/vim-ansible-yaml.git/' 'vim-ansib
 
 [vim-bracketed-paste]
 checkout = git clone 'https://github.com/ConradIrwin/vim-bracketed-paste.git/' 'vim-bracketed-paste'
+
+[vim-adjustscroll]
+checkout = git clone 'https://github.com/dbakker/vim-adjustscroll.git/' 'vim-adjustscroll'
