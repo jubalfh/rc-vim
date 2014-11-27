@@ -111,3 +111,6 @@ checkout = git clone 'https://github.com/dbakker/vim-adjustscroll.git/' 'vim-adj
 
 [vimfiler.vim]
 checkout = git clone 'https://github.com/shougo/vimfiler.vim.git/' 'vimfiler.vim'
+
+[unite.vim]
+checkout = git clone 'https://github.com/shougo/unite.vim.git/' 'unite.vim'
