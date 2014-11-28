@@ -21,4 +21,11 @@ let g:airline_powerline_fonts=1
 " signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
 
+" limelight + goyo
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = '#777777'
+let g:limelight_default_coefficient = 0.7
+
+autocmd VimEnter * Limelight
+
 " vim: syntax=vim
