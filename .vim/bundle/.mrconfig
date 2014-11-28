@@ -117,3 +117,6 @@ checkout = git clone 'https://github.com/shougo/unite.vim.git/' 'unite.vim'
 
 [limelight.vim]
 checkout = git clone 'https://github.com/junegunn/limelight.vim.git/' 'limelight.vim'
+
+[goyo.vim]
+checkout = git clone 'https://github.com/junegunn/goyo.vim.git/' 'goyo.vim'
