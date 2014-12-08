@@ -3,9 +3,6 @@ git_update =
 	   git pull
 	   git submodule update --recursive
 
-[ctrlp.vim]
-checkout = git clone https://github.com/kien/ctrlp.vim.git/
-
 [gundo.vim]
 checkout = git clone https://github.com/sjl/gundo.vim.git/
 
