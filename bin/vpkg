@@ -7,7 +7,7 @@ mr() {
 }
 
 initool() {
-   command git --file .mrconfig "$@"
+   command git config --file .mrconfig "$@"
 }
 
 plugin::add() {
