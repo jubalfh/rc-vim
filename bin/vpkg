@@ -2,6 +2,28 @@
 
 # requires: git, mr, vcsh
 
+# utility functions
+on_error() {
+    local prog fun lineno rc
+    prog=$(basename $0)
+    read -r fun lineno rc <<< "$@"
+    echo "error at ${fun} in ${prog}:${lineno} with exit code ${rc}."
+    [[ -z "${VPKG_DEBUG}" ]] || caller
+    exit ${rc}
+}
+
+usage() {
+    echo "Usage: vpkg COMMAND [OPTIONS]"
+    echo
+    echo "Commands:"
+    echo "  add - add a vim plugin"
+    echo "  delete - remove a vim plugin"
+    echo "  list - list installed plugins"
+    echo "  update - update vim configuration"
+    echo "  push - push local changes to the repository."
+    exit 0
+}
+
 mr() {
    command mr "$@"
 }
@@ -10,23 +32,28 @@ initool() {
    command git config --file .mrconfig "$@"
 }
 
+# plugin management
 plugin::add() {
-    # TODO: add heuristics to handle:
-    # - full URIs
-    # - different repository types
-    local repo name uri
-    plugin_repo="$1"
-    name="${plugin_repo##*/}"
-    uri="https://github.com/${plugin_repo}.git/"
-    cd "${bundles}"
-    plugin::add::git "${name}" "${uri}"
-    plugin::register "${name}"
+    local src name uri user
+    src="$1"; shift
+    case "${src}" in 
+        github)
+            read -r user name <<< "$@"
+            uri="https://github.com/${user}/${name}.git/"
+            plugin::add::git "${name}" "${uri}" && plugin::register "${name}"
+            ;;
+        git)
+            read -r uri name <<< "$@"
+            : ${name:=$(basename ${uri#http?://} .git)}
+            plugin::add::git "${name}" "${uri}" && plugin::register "${name}"
+            ;;
+    esac
 }
 
 plugin::add::git() {
     local name uri
     read -r name uri <<< "$@"
-    git clone --recursive "${uri}" "${name}"
+    [[ -d "${name}" ]] && return 1 || git clone --recursive "${uri}" "${name}"
 }
 
 plugin::add::hg() {
@@ -89,19 +116,30 @@ vpkg::prep() {
         echo "${bundles}/.mrconfig" >> "$HOME/.mrtrust"
 }
 
-
 main() {
-    set -e
+    # error handling
+    [[ -z "${VPKG_DEBUG}" ]] || set -x
+    set -o errexit
+    set -o errtrace
+    set -o pipefail
+    #set -o nounset
+    trap 'on_error ${FUNCNAME[0]} ${LINENO} ${?}' ERR INT HUP
+
+    : "${VPKG_LOGFILE:=/dev/null}"
+    exec 2>${VPKG_LOGFILE}
 
     export bundles="$HOME/.vim/bundle"
     export cfg_repo="rc-vim"
     vpkg::prep
 
     cd "${bundles}"
+    if [[ $# < 1 ]]; then
+        set -- "help"
+    fi
     action="$1"; shift
     case "${action}" in
         add)
-            plugin::add "$1" ;;
+            plugin::add "$@" ;;
         del|delete|remove)
             plugin::delete "$1" ;;
         update)
@@ -110,6 +148,8 @@ main() {
             plugin::list ;;
         push)
             vcsh push ;;
+        help|*)
+            usage ;;
     esac
 }
 
