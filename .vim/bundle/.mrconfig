@@ -117,3 +117,6 @@ checkout = git clone 'https://github.com/junegunn/limelight.vim.git/' 'limelight
 
 [goyo.vim]
 checkout = git clone 'https://github.com/junegunn/goyo.vim.git/' 'goyo.vim'
+
+[quickfix-reflector.vim]
+checkout = git clone 'https://github.com/stefandtw/quickfix-reflector.vim.git/' 'quickfix-reflector.vim'
