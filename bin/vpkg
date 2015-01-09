@@ -44,7 +44,7 @@ plugin::add() {
             ;;
         git)
             read -r uri name <<< "$@"
-            : ${name:=$(basename ${uri#http?://} .git)}
+            : ${name:=$(basename ${uri/#@(http?|git*|ssh):\/\/} .git)}
             plugin::add::git "${name}" "${uri}" && plugin::register "${name}"
             ;;
     esac
