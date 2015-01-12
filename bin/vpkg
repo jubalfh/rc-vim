@@ -33,6 +33,10 @@ initool() {
 }
 
 # plugin management
+
+plugin::list() {
+    awk '$0 ~ /\[.*\]/ && $0 !~ /DEFAULT/ { gsub(/[\[\]]/, ""); print }' "${mrconfig}"
+}
 plugin::add() {
     local src name uri user
     src="$1"; shift
@@ -97,17 +101,28 @@ plugin::unregister() {
     fi
 }
 
+plugin::sync() {
+    local plugins dir
+    local -a dirs
+    plugins=$(plugin::list)
+    while read -r dir; do
+        dirs+=("${dir}")
+    done < <(find "${bundles}" -type d -mindepth 1 -maxdepth 1 -printf "%f\n")
+    for ((i=0; i<${#dirs[@]}; i++)); do
+        dir="${dirs[$i]}"
+        if [[ ! "${plugins}" == *${dir}* ]]; then
+            rm -rf "${dir}" && echo "dangling directory removed: ${dir}."
+        fi
+    done
+}
+
 plugin::update() {
     plugin::update::all
 }
 
 plugin::update::all() {
     vcsh "${cfg_repo}" pull
-    mr -j4 update
-}
-
-plugin::list() {
-    ls -d * | grep -v pathogen
+    mr update
 }
 
 vpkg::prep() {
@@ -129,6 +144,7 @@ main() {
     exec 2>${VPKG_LOGFILE}
 
     export bundles="$HOME/.vim/bundle"
+    export mrconfig="$HOME/.vim/bundle/.mrconfig"
     export cfg_repo="rc-vim"
     vpkg::prep
 
@@ -148,6 +164,8 @@ main() {
             plugin::list ;;
         push)
             vcsh push ;;
+        sync)
+            plugin::sync ;;
         help|*)
             usage ;;
     esac
