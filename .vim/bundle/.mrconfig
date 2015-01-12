@@ -120,3 +120,6 @@ checkout = git clone 'https://github.com/junegunn/goyo.vim.git/' 'goyo.vim'
 
 [quickfix-reflector.vim]
 checkout = git clone 'https://github.com/stefandtw/quickfix-reflector.vim.git/' 'quickfix-reflector.vim'
+
+[vim-ldapschema]
+checkout = git clone 'git@github.com:jubalfh/rc-vim.git' 'vim-ldapschema'
