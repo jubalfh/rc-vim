@@ -24,12 +24,14 @@ usage() {
     exit 0
 }
 
+# make sure mr is not an alias
 mr() {
    command mr "$@"
 }
 
+# use git to manage .ini config files
 initool() {
-   command git config --file .mrconfig "$@"
+    command git config "$@"
 }
 
 # plugin management
@@ -63,13 +65,13 @@ plugin::add::git() {
 plugin::add::hg() {
     local name uri
     read -r name uri <<< "$@"
-    hg clone "${uri}" "${name}"
+    [[ -d "${name}" ]] && return 1 || hg clone "${uri}" "${name}"
 }
 
 plugin::add::svn() {
     local name uri
     read -r name uri <<< "$@"
-    svn co "${uri}" "${name}"
+    [[ -d "${name}" ]] && return 1 || svn co "${uri}" "${name}"
 }
 
 plugin::delete() {
@@ -83,7 +85,7 @@ plugin::register() {
     local name
     read -r name <<< "$@"
     mr register "${name}"
-    vcsh "${cfg_repo}" add .mrconfig
+    vcsh "${cfg_repo}" add "${mrconfig}"
     vcsh "${cfg_repo}" commit -m "Plugin ${name} registered in .mrconfig."
     if [[ -n "${vcsh_push}" ]]; then
         vcsh "${cfg_repo}" push
@@ -93,8 +95,8 @@ plugin::register() {
 plugin::unregister() {
     local name
     read -r name <<< "$@"
-    initool --remove-section "${name}" || true
-    vcsh "${cfg_repo}" add .mrconfig
+    initool --file "${mrconfig}" --remove-section "${name}" || true
+    vcsh "${cfg_repo}" add "${mrconfig}"
     vcsh "${cfg_repo}" commit -m "Plugin ${name} unregistered from .mrconfig."
     if [[ -n "${vcsh_push}" ]]; then
         vcsh "${cfg_repo}" push
