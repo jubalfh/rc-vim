@@ -1,0 +1,12 @@
+*
+!/bin
+!/bin/vpkg
+!/.vim
+!/.vim/autocommands
+!/.vim/bundle
+!/.vim/bundle/.mrconfig
+!/.vim/init
+!/.vim/instprep
+!/.vim/mappings
+!/.vim/pluginconfig
+!/.vimrc
