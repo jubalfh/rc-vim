@@ -121,3 +121,6 @@ checkout = git clone 'https://github.com/pangloss/vim-javascript.git/' 'vim-java
 
 [javascript-libraries-syntax.vim]
 checkout = git clone 'https://github.com/othree/javascript-libraries-syntax.vim.git/' 'javascript-libraries-syntax.vim'
+
+[targets.vim]
+checkout = git clone 'https://github.com/wellle/targets.vim.git/' 'targets.vim'
