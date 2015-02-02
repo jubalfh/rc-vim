@@ -78,6 +78,17 @@ github_exists() {
     fi
 }
 
+git_exists() {
+    local uri status rc
+    read -r uri <<< "$@"
+    status=$(rc=0; git ls-remote "${uri}" &>/dev/null || rc=$?; echo $rc)
+    if [[ "${status}" == 128 ]]; then
+        return 1
+    else
+        return 0
+    fi
+}
+
 # plugin management
 
 plugin::list() {
@@ -110,7 +121,7 @@ plugin::add::github() {
 plugin::add::git() {
     local name uri
     read -r name uri <<< "$@"
-    uri_exists "${uri}" || error "no git repository ${name} exists at ${uri}"
+    git_exists "${uri}" || error "no git repository ${name} exists at ${uri}"
     [[ -d "${name}" ]] && error "plugin directory ${name} already exists" || git clone --recursive "${uri}" "${name}"
 }
 
