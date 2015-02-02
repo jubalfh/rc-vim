@@ -12,6 +12,13 @@ on_error() {
     exit ${rc}
 }
 
+error() {
+    local message
+    read -r message <<< "$@"
+    echo "Error: ${message}."
+    exit 1
+}
+
 usage() {
     echo "Usage: vpkg COMMAND [OPTIONS]"
     echo
@@ -27,6 +34,18 @@ usage() {
 # make sure mr is not an alias
 mr() {
    command mr "$@"
+}
+
+# work around places that don't use reasonable find
+find() {
+    if command -v gfind &>/dev/null; then
+        cmd="gfind"
+    elif command -v find &>/dev/null; then
+        cmd="find"
+    else
+        error "no suitable find command found"
+    fi
+    command ${cmd} "$@"
 }
 
 # use git to manage .ini config files
