@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# requires: git, mr, vcsh
+# requires: git, mr, vcsh, curl
 
 # utility functions
 on_error() {
@@ -53,6 +53,31 @@ initool() {
     command git config "$@"
 }
 
+# check if the URI is valid
+uri_exists() {
+    local uri status
+    read -r uri <<< "$@"
+    status=$(curl -s -o /dev/null -w "%{http_code}" "${uri}")
+    if [[ "${status}" =~ [23][0-9][0-9] ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# check if github repo exists
+github_exists() {
+    local user name status
+    read -r user name <<< "$@"
+    uri="https://api.github.com/repos/${user}/${name}"
+    status=$(curl -s -o /dev/null -w "%{http_code}" "${uri}")
+    if [[ "${status}" =~ [2][0-9][0-9] ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # plugin management
 
 plugin::list() {
@@ -64,8 +89,7 @@ plugin::add() {
     case "${src}" in 
         github)
             read -r user name <<< "$@"
-            uri="https://github.com/${user}/${name}.git/"
-            plugin::add::git "${name}" "${uri}" && plugin::register "${name}"
+            plugin::add::github "${user}" "${name}" && plugin::register "${name}"
             ;;
         git)
             read -r uri name <<< "$@"
@@ -75,10 +99,19 @@ plugin::add() {
     esac
 }
 
+plugin::add::github() {
+    local user name uri
+    read -r user name <<< "$@"
+    github_exists "${user}" "${name}" || error "no github repository ${name} found for user ${user}"
+    uri="https://github.com/${user}/${name}.git/"
+    plugin::add::git "${name}" "${uri}"
+}
+
 plugin::add::git() {
     local name uri
     read -r name uri <<< "$@"
-    [[ -d "${name}" ]] && return 1 || git clone --recursive "${uri}" "${name}"
+    uri_exists "${uri}" || error "no git repository ${name} exists at ${uri}"
+    [[ -d "${name}" ]] && error "plugin directory ${name} already exists" || git clone --recursive "${uri}" "${name}"
 }
 
 plugin::add::hg() {
