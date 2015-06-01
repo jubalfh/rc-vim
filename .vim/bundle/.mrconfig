@@ -130,3 +130,6 @@ checkout = git clone 'https://github.com/dietsche/vim-lastplace.git/' 'vim-lastp
 
 [vim-tmux-focus-events]
 checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/' 'vim-tmux-focus-events'
+
+[jedi-vim]
+checkout = git clone 'https://github.com/davidhalter/jedi-vim.git/' 'jedi-vim'
