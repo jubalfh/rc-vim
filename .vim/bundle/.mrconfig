@@ -42,9 +42,6 @@ checkout = git clone https://github.com/xolox/vim-misc.git/
 [vim-pathogen]
 checkout = git clone https://github.com/tpope/vim-pathogen.git/
 
-[vim-pyref]
-checkout = git clone https://github.com/xolox/vim-pyref.git/
-
 [vim-repeat]
 checkout = git clone https://github.com/tpope/vim-repeat.git/
 
