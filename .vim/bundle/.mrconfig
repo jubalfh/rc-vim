@@ -6,9 +6,6 @@ git_update =
 [gundo.vim]
 checkout = git clone https://github.com/sjl/gundo.vim.git/
 
-[netrw.vim]
-checkout = git clone https://github.com/vim-scripts/netrw.vim.git/
-
 [pep8]
 checkout = git clone https://github.com/vim-scripts/pep8.git/
 
