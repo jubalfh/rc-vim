@@ -187,7 +187,7 @@ plugin::update() {
 
 plugin::update::all() {
     vcsh "${cfg_repo}" pull
-    mr update
+    mr update || echo "One of the repos did not update properly."
 }
 
 vpkg::prep() {
@@ -222,7 +222,10 @@ main() {
         add)
             plugin::add "$@" ;;
         del|delete|remove)
-            plugin::delete "$1" ;;
+            for plugin in "$@"; do
+                plugin::delete "${plugin}"
+            done
+            ;;
         update)
             plugin::update ;;
         list)
