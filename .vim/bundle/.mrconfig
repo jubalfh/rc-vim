@@ -101,9 +101,6 @@ checkout = git clone 'https://github.com/stefandtw/quickfix-reflector.vim.git/' 
 [vim-ldapschema]
 checkout = git clone 'https://github.com/jubalfh/vim-ldapschema.git/' 'vim-ldapschema'
 
-[vim-javascript]
-checkout = git clone 'https://github.com/pangloss/vim-javascript.git/' 'vim-javascript'
-
 [javascript-libraries-syntax.vim]
 checkout = git clone 'https://github.com/othree/javascript-libraries-syntax.vim.git/' 'javascript-libraries-syntax.vim'
 
