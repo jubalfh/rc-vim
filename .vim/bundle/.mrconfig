@@ -73,9 +73,6 @@ checkout = git clone 'https://github.com/ciaranm/detectindent.git/' 'detectinden
 [GoldenView.Vim]
 checkout = git clone 'https://github.com/zhaocai/GoldenView.Vim.git/' 'GoldenView.Vim'
 
-[vim-dispatch]
-checkout = git clone 'https://github.com/tpope/vim-dispatch.git/' 'vim-dispatch'
-
 [vim-pencil]
 checkout = git clone 'https://github.com/reedes/vim-pencil.git/' 'vim-pencil'
 
