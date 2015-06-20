@@ -112,3 +112,6 @@ checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/
 
 [jedi-vim]
 checkout = git clone 'https://github.com/davidhalter/jedi-vim.git/' 'jedi-vim'
+
+[python-syntax]
+checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-syntax'
