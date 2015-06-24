@@ -42,9 +42,6 @@ checkout = git clone https://github.com/tpope/vim-repeat.git/
 [vim-surround]
 checkout = git clone https://github.com/tpope/vim-surround.git/
 
-[vim-vinegar]
-checkout = git clone https://github.com/tpope/vim-vinegar.git/
-
 [vim-multiple-cursors]
 checkout = git clone 'https://github.com/terryma/vim-multiple-cursors.git/' 'vim-multiple-cursors'
 
