@@ -73,9 +73,6 @@ checkout = git clone 'https://github.com/reedes/vim-pencil.git/' 'vim-pencil'
 [vim-wordy]
 checkout = git clone 'https://github.com/reedes/vim-wordy.git/' 'vim-wordy'
 
-[vim-pentadactyl]
-checkout = git clone 'https://github.com/dogrover/vim-pentadactyl.git/' 'vim-pentadactyl'
-
 [vim-ansible-yaml]
 checkout = git clone 'https://github.com/chase/vim-ansible-yaml.git/' 'vim-ansible-yaml'
 
