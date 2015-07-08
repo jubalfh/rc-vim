@@ -106,3 +106,6 @@ checkout = git clone 'https://github.com/davidhalter/jedi-vim.git/' 'jedi-vim'
 
 [python-syntax]
 checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-syntax'
+
+[vim-bracketed-paste]
+checkout = git clone 'https://github.com/ConradIrwin/vim-bracketed-paste.git' 'vim-bracketed-paste'
