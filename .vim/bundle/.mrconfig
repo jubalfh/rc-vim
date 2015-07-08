@@ -24,9 +24,6 @@ checkout = git clone https://github.com/altercation/vim-colors-solarized.git/
 [vim-fugitive]
 checkout = git clone https://github.com/tpope/vim-fugitive.git/
 
-[vim-ldif]
-checkout = git clone https://github.com/vim-scripts/ldif.vim.git/ vim-ldif
-
 [vim-markdown]
 checkout = git clone https://github.com/tpope/vim-markdown.git/
 
