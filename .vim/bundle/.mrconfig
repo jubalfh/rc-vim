@@ -76,9 +76,6 @@ checkout = git clone 'https://github.com/chase/vim-ansible-yaml.git/' 'vim-ansib
 [vim-adjustscroll]
 checkout = git clone 'https://github.com/dbakker/vim-adjustscroll.git/' 'vim-adjustscroll'
 
-[unite.vim]
-checkout = git clone 'https://github.com/shougo/unite.vim.git/' 'unite.vim'
-
 [limelight.vim]
 checkout = git clone 'https://github.com/junegunn/limelight.vim.git/' 'limelight.vim'
 
