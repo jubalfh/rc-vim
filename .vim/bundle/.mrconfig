@@ -107,5 +107,3 @@ checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-synta
 [vim-bracketed-paste]
 checkout = git clone 'https://github.com/ConradIrwin/vim-bracketed-paste.git' 'vim-bracketed-paste'
 
-[vimproc.vim]
-checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
