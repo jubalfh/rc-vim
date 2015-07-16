@@ -101,3 +101,6 @@ checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-synta
 [vim-bracketed-paste]
 checkout = git clone 'https://github.com/ConradIrwin/vim-bracketed-paste.git' 'vim-bracketed-paste'
 
+
+[ctrlp.vim]
+checkout = git clone 'https://github.com/kien/ctrlp.vim.git' 'ctrlp.vim'
