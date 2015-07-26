@@ -107,3 +107,6 @@ checkout = git clone 'https://github.com/kien/ctrlp.vim.git' 'ctrlp.vim'
 
 [vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
+
+[vim-indent-guides]
+checkout = git clone 'https://github.com/nathanaelkane/vim-indent-guides.git' 'vim-indent-guides'
