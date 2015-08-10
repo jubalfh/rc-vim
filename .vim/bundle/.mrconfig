@@ -110,3 +110,6 @@ checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-di
 
 [vim-indent-guides]
 checkout = git clone 'https://github.com/nathanaelkane/vim-indent-guides.git' 'vim-indent-guides'
+
+[ListToggle]
+checkout = git clone 'https://github.com/Valloric/ListToggle.git' 'ListToggle'
