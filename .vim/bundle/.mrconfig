@@ -116,3 +116,6 @@ checkout = git clone 'https://github.com/Valloric/ListToggle.git' 'ListToggle'
 
 [vim-expand-region]
 checkout = git clone 'https://github.com/terryma/vim-expand-region.git' 'vim-expand-region'
+
+[vim-interestingwords]
+checkout = git clone 'https://github.com/vasconcelloslf/vim-interestingwords.git' 'vim-interestingwords'
