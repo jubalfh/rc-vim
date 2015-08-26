@@ -8,7 +8,7 @@ nmap <silent> <leader><space> V
 nnoremap <silent> <leader>td <Plug>TaskList
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>g :GundoToggle<CR>
-nnoremap <silent> <leader>l :TagbarToggle<CR>
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 nnoremap <silent> <leader>w! :write !sudo tee % >/dev/null<cr><cr>

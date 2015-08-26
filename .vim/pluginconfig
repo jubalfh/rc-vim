@@ -2,20 +2,8 @@
 
 " golden view
 let g:goldenview__enable_default_mapping = 0
-" 1. split to tiled windows
-nmap <silent> <Leader>l  <Plug>GoldenViewSplit
-
-" 2. quickly switch current window with the main pane
-" and toggle back
-nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
-nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
-
-" 3. jump to next and previous window
-nmap <silent> <C-N>  <Plug>GoldenViewNext
-nmap <silent> <C-P>  <Plug>GoldenViewPrevious
-
-" python-mode
-let g:pymode_lint_write = 0
+" split to tiled windows
+nmap <silent> <Leader>L  <Plug>GoldenViewSplit
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -30,7 +18,6 @@ let g:tagbar_usearrows = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts=1
-
 
 " signify
 let g:signify_vcs_list = [ 'git', 'hg', 'svn' ]
