@@ -119,3 +119,6 @@ checkout = git clone 'https://github.com/terryma/vim-expand-region.git' 'vim-exp
 
 [vim-interestingwords]
 checkout = git clone 'https://github.com/vasconcelloslf/vim-interestingwords.git' 'vim-interestingwords'
+
+[gruvbox]
+checkout = git clone 'https://github.com/morhetz/gruvbox' 'gruvbox'
