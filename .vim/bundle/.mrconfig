@@ -122,3 +122,6 @@ checkout = git clone 'https://github.com/morhetz/gruvbox' 'gruvbox'
 
 [syntastic]
 checkout = git clone 'https://github.com/scrooloose/syntastic.git' 'syntastic'
+
+[vim-ctrlspace]
+checkout = git clone 'https://github.com/szw/vim-ctrlspace.git' 'vim-ctrlspace'
