@@ -89,7 +89,7 @@ if has("gui_running")
     set mousehide
 endif
 
-colorscheme solarized
+colorscheme gruvbox
 highlight SpecialKey ctermfg=11 ctermbg=8
 
 if &term =~ '256color'
