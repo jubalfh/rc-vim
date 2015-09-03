@@ -125,3 +125,6 @@ checkout = git clone 'https://github.com/scrooloose/syntastic.git' 'syntastic'
 
 [vim-ctrlspace]
 checkout = git clone 'https://github.com/szw/vim-ctrlspace.git' 'vim-ctrlspace'
+
+[delimitMate]
+checkout = git clone 'https://github.com/Raimondi/delimitMate.git' 'delimitMate'
