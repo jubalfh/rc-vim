@@ -95,10 +95,6 @@ checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/
 [python-syntax]
 checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-syntax'
 
-[vim-bracketed-paste]
-checkout = git clone 'https://github.com/ConradIrwin/vim-bracketed-paste.git' 'vim-bracketed-paste'
-
-
 [vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
 
