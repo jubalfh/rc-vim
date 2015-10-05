@@ -124,3 +124,6 @@ checkout = git clone 'https://github.com/Raimondi/delimitMate.git' 'delimitMate'
 
 [ansible-vim]
 checkout = git clone 'https://github.com/pearofducks/ansible-vim.git' 'ansible-vim'
+
+[terminus]
+checkout = git clone 'https://github.com/wincent/terminus.git' 'terminus'
