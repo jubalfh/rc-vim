@@ -13,7 +13,6 @@ filetype indent on
 syntax on
 
 set modeline
-set background=dark
 
 set noautoread
 set autowrite
@@ -84,7 +83,7 @@ set undofile
 
 " colorschemes and gui
 if has("gui_running")
-    set guifont=Ubuntu\ Mono\ 13
+    set guifont=Fira\ Sans\ 13
     set guioptions=acegimrLT
     set mousehide
 endif
