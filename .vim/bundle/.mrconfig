@@ -127,3 +127,6 @@ checkout = git clone 'https://github.com/pearofducks/ansible-vim.git' 'ansible-v
 
 [terminus]
 checkout = git clone 'https://github.com/wincent/terminus.git' 'terminus'
+
+[vim-do]
+checkout = git clone 'https://github.com/joonty/vim-do.git' 'vim-do'
