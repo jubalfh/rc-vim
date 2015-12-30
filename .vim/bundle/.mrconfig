@@ -127,3 +127,6 @@ checkout = git clone 'https://github.com/wincent/terminus.git' 'terminus'
 
 [vim-do]
 checkout = git clone 'https://github.com/joonty/vim-do.git' 'vim-do'
+
+[vim-pandoc]
+checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc.git' 'vim-pandoc'
