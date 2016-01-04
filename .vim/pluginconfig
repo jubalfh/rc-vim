@@ -31,4 +31,14 @@ let g:limelight_paragraph_span = 2
 
 autocmd VimEnter * Limelight
 
+" pandoc + pandoc-syntax
+let g:pandoc#syntax#conceal#cchar_overrides = {
+    \ "newline": "┐",
+    \ "codelang": "◰",
+    \ "atx": "☇" }
+
+let g:pandoc#formatting#mode = "hA"
+let g:pandoc#formatting#smart_autoformat_on_cursormoved = 1
+let g:pandoc#formatting#textwidth = 71
+
 " vim: syntax=vim
