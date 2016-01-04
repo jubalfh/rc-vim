@@ -83,7 +83,7 @@ set undofile
 
 " colorschemes and gui
 if has("gui_running")
-    set guifont=Fira\ Sans\ 13
+    set guifont=Fira\ Mono\ 13
     set guioptions=acegimrLT
     set mousehide
 endif
