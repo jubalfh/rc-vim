@@ -133,3 +133,6 @@ checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc-syntax.git' 'vim-
 
 [python-mode]
 checkout = git clone 'https://github.com/klen/python-mode.git' 'python-mode'
+
+[vimproc.vim]
+checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
