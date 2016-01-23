@@ -16,7 +16,7 @@ checkout = git clone https://github.com/ervandew/supertab.git/
 checkout = git clone https://github.com/majutsushi/tagbar.git/
 
 [vim-airline]
-checkout = git clone https://github.com/bling/vim-airline.git/
+checkout = git clone https://github.com/vim-airline/vim-airline.git/
 
 [vim-colors-solarized]
 checkout = git clone https://github.com/altercation/vim-colors-solarized.git/
@@ -136,3 +136,6 @@ checkout = git clone 'https://github.com/klen/python-mode.git' 'python-mode'
 
 [vimproc.vim]
 checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
+
+[vim-table-mode]
+checkout = git clone 'https://github.com/dhruvasagar/vim-table-mode.git' 'vim-table-mode'
