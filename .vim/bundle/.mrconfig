@@ -139,3 +139,6 @@ checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
 
 [vim-table-mode]
 checkout = git clone 'https://github.com/dhruvasagar/vim-table-mode.git' 'vim-table-mode'
+
+[airline-tablemode.vim]
+checkout = git clone 'https://github.com/retorillo/airline-tablemode.vim.git' 'airline-tablemode.vim'
