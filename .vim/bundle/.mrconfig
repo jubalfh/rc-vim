@@ -95,9 +95,6 @@ checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-synta
 [vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
 
-[vim-indent-guides]
-checkout = git clone 'https://github.com/nathanaelkane/vim-indent-guides.git' 'vim-indent-guides'
-
 [ListToggle]
 checkout = git clone 'https://github.com/Valloric/ListToggle.git' 'ListToggle'
 
