@@ -139,3 +139,6 @@ checkout = git clone 'https://github.com/dhruvasagar/vim-table-mode.git' 'vim-ta
 
 [airline-tablemode.vim]
 checkout = git clone 'https://github.com/retorillo/airline-tablemode.vim.git' 'airline-tablemode.vim'
+
+[indentLine]
+checkout = git clone 'https://github.com/Yggdroot/indentLine.git' 'indentLine'
