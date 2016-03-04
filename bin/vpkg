@@ -192,8 +192,11 @@ plugin::update::all() {
 
 vpkg::prep() {
     [[ -f "$HOME/.mrtrust" ]] || touch "$HOME/.mrtrust"
-    grep -q "${bundles}/.mrconfig" "$HOME/.mrtrust" || \
-        echo "${bundles}/.mrconfig" >> "$HOME/.mrtrust"
+    grep -q "${mrconfig}" "$HOME/.mrtrust" || \
+        echo "${mrconfig}" >> "$HOME/.mrtrust"
+    for dir in bundle undo backup; do
+        [ -d "${dir}" ] || mkdir -p "${vimdir}/${dir}"
+    done
 }
 
 main() {
@@ -208,8 +211,9 @@ main() {
     : "${VPKG_LOGFILE:=/dev/null}"
     exec 2>${VPKG_LOGFILE}
 
-    export bundles="$HOME/.vim/bundle"
-    export mrconfig="$HOME/.vim/bundle/.mrconfig"
+    export vimdir="$HOME/.vim"
+    export bundles="${vimdir}/bundle"
+    export mrconfig="${bundles}/.mrconfig"
     export cfg_repo="rc-vim"
     vpkg::prep
 

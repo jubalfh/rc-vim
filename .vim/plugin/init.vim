@@ -1,16 +1,4 @@
-" initial infection… make it happen
-
-filetype off
-runtime instprep
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-execute pathogen#helptags()
-
-filetype on
-filetype plugin on
-filetype indent on
-
-syntax on
+" set some defaults
 
 set modeline
 
@@ -51,9 +39,7 @@ set ttyfast
 set wrap
 set nofoldenable
 set formatoptions=qrnl1
-if exists("+colorcolumn")
-    set colorcolumn=85
-endif
+set colorcolumn=85
 
 set scrolloff=2
 set laststatus=2
@@ -98,9 +84,9 @@ if &term =~ '256color'
 endif
 
 " load specific configuration
-runtime autocommands
-runtime mappings
-runtime pluginconfig
-runtime local
+" runtime autocommands
+" runtime mappings
+" runtime pluginconfig
+" runtime local
 
 " vim: syntax=vim ft=vim
