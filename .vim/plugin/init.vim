@@ -6,6 +6,7 @@ set noautoread
 set autowrite
 set autoindent
 set smartindent
+set breakindent
 
 set backspace=indent,eol,start
 set copyindent
