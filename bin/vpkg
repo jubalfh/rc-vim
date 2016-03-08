@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # requires: git, mr, vcsh, curl
 
@@ -210,6 +210,11 @@ main() {
 
     : "${VPKG_LOGFILE:=/dev/null}"
     exec 2>${VPKG_LOGFILE}
+
+    # sanitize the environment a bit...
+    for envvar in GIT_DIR VCSH_DIRECTORY VCSH_REPO_NAME VCSH_COMMAND; do
+        unset "${envvar}"
+    done
 
     export vimdir="$HOME/.vim"
     export bundles="${vimdir}/bundle"
