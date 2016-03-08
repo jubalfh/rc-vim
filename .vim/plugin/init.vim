@@ -84,9 +84,6 @@ if &term =~ '256color'
 endif
 
 " load specific configuration
-" runtime autocommands
-" runtime mappings
-" runtime pluginconfig
-" runtime local
+runtime local
 
 " vim: syntax=vim ft=vim
