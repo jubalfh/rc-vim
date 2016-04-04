@@ -83,9 +83,6 @@ checkout = git clone 'https://github.com/jubalfh/vim-ldapschema.git/' 'vim-ldaps
 [targets.vim]
 checkout = git clone 'https://github.com/wellle/targets.vim.git/' 'targets.vim'
 
-[vim-lastplace]
-checkout = git clone 'https://github.com/dietsche/vim-lastplace.git/' 'vim-lastplace'
-
 [vim-tmux-focus-events]
 checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/' 'vim-tmux-focus-events'
 
