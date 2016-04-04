@@ -94,6 +94,7 @@ git_exists() {
 plugin::list() {
     awk '$0 ~ /\[.*\]/ && $0 !~ /DEFAULT/ { gsub(/[\[\]]/, ""); print }' "${mrconfig}"
 }
+
 plugin::add() {
     local src name uri user
     src="$1"; shift
