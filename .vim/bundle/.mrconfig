@@ -145,3 +145,6 @@ checkout = git clone 'https://github.com/vim-airline/vim-airline-themes.git' 'vi
 
 [vim-endwise]
 checkout = git clone 'https://github.com/tpope/vim-endwise.git' 'vim-endwise'
+
+[vim-stay]
+checkout = git clone 'https://github.com/kopischke/vim-stay.git' 'vim-stay'
