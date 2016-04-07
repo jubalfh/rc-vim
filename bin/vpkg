@@ -188,7 +188,8 @@ plugin::update() {
 
 plugin::update::all() {
     vcsh "${cfg_repo}" pull
-    mr update || echo "One of the repos did not update properly."
+    mr update || echo "At least one of the repos did not update properly."
+    plugin::sync
 }
 
 vpkg::prep() {
