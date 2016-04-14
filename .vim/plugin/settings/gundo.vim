@@ -1,2 +1,2 @@
 " gundo plugin settings
-nnoremap <silent> ;g :GundoToggle<CR>
+nnoremap <silent> <leader>g :GundoToggle<CR>

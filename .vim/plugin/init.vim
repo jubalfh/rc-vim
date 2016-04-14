@@ -11,10 +11,14 @@ set breakindent
 set backspace=indent,eol,start
 set copyindent
 set noconfirm
-set cpoptions=ceFgns
+if !has("nvim")
+    set cpoptions=ceFgns
+    set encoding=utf-8
+else
+    set cpoptions=ceFns
+endif
 set nodigraph
 set noerrorbells
-set encoding=utf-8
 set esckeys
 set magic
 
