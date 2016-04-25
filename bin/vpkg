@@ -33,7 +33,21 @@ usage() {
 
 # make sure mr is not an alias
 mr() {
-   command mr "$@"
+   command mr -mqs "$@"
+}
+
+spinner() {
+    trap "tput cnorm; exit" TERM
+    local -a spinner
+    spinner=("◴" "◷" "◶" "◵")
+    tput civis
+    while :; do
+        for ((i=0; i<${#spinner[@]}; i++)); do
+            printf ${spinner[$i]}
+            sleep .1
+            printf "\b"
+        done
+    done
 }
 
 # work around places that don't use reasonable find
@@ -89,6 +103,12 @@ git_exists() {
     fi
 }
 
+reexec() {
+    local message="$@"
+    echo "${message}"
+    exec "$0" "${BASH_ARGV[*]}"
+}
+
 # plugin management
 
 plugin::list() {
@@ -138,6 +158,11 @@ plugin::add::svn() {
     [[ -d "${name}" ]] && return 1 || svn co "${uri}" "${name}"
 }
 
+plugin::update() {
+    echo -n "Updating plugins... "; spinner & spid=$!
+    mr update || (kill -TERM "${spid}"; echo " at least one of the repositories failed.") && (kill -TERM "${spid}"; echo " done.")
+}
+
 plugin::delete() {
     local name
     read -r name <<< "$@"
@@ -182,14 +207,17 @@ plugin::sync() {
     done
 }
 
-plugin::update() {
-    plugin::update::all
+update::all() {
+    config::update
+    plugin::update
+    plugin::sync
 }
 
-plugin::update::all() {
-    vcsh "${cfg_repo}" pull
-    mr update || echo "At least one of the repos did not update properly."
-    plugin::sync
+config::update() {
+    local sha; sha="$(sha512sum "$0")"
+    echo -n "Updating configuration... ";
+    vcsh "${cfg_repo}" pull 2>&1 >/dev/null; echo "done."
+    echo -n "${sha}" | sha512sum --check --status || reexec "$(basename $0) changed, re-executing"
 }
 
 vpkg::prep() {
@@ -238,7 +266,7 @@ main() {
             done
             ;;
         update)
-            plugin::update ;;
+            update::all ;;
         list)
             plugin::list ;;
         push)
