@@ -151,3 +151,6 @@ checkout = git clone 'https://github.com/kopischke/vim-stay.git' 'vim-stay'
 
 [vim-abolish]
 checkout = git clone 'https://github.com/tpope/vim-abolish.git' 'vim-abolish'
+
+[undotree]
+checkout = git clone 'https://github.com/mbbill/undotree.git' 'undotree'
