@@ -33,7 +33,7 @@ usage() {
 
 # make sure mr is not an alias
 mr() {
-   command mr -mqs "$@"
+   command mr "$@"
 }
 
 spinner() {
@@ -159,8 +159,12 @@ plugin::add::svn() {
 }
 
 plugin::update() {
-    echo -n "Updating plugins... "; spinner & spid=$!
-    mr update || (kill -TERM "${spid}"; echo " at least one of the repositories failed.") && (kill -TERM "${spid}"; echo " done.")
+    if [[ "$1" =~ (-v|--verbose) ]]; then
+        mr update
+    else
+        echo -n "Updating plugins... "; spinner & spid=$!
+        mr -mqs update || (kill -TERM "${spid}"; echo " at least one of the repositories failed.") && (kill -TERM "${spid}"; echo " done.")
+    fi
 }
 
 plugin::delete() {
@@ -208,9 +212,9 @@ plugin::sync() {
 }
 
 update::all() {
-    config::update
-    plugin::update
-    plugin::sync
+    config::update "$@"
+    plugin::update "$@"
+    plugin::sync "$@"
 }
 
 config::update() {
@@ -266,7 +270,7 @@ main() {
             done
             ;;
         update)
-            update::all ;;
+            update::all "$@";;
         list)
             plugin::list ;;
         push)
