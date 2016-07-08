@@ -157,3 +157,6 @@ checkout = git clone 'https://github.com/tpope/vim-capslock' 'vim-capslock'
 
 [vim-chef]
 checkout = git clone 'https://github.com/vadv/vim-chef' 'vim-chef'
+
+[vim-addon-mw-utils]
+checkout = git clone 'https://github.com/MarcWeber/vim-addon-mw-utils.git' 'vim-addon-mw-utils'
