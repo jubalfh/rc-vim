@@ -160,3 +160,6 @@ checkout = git clone 'https://github.com/vadv/vim-chef' 'vim-chef'
 
 [vim-addon-mw-utils]
 checkout = git clone 'https://github.com/MarcWeber/vim-addon-mw-utils.git' 'vim-addon-mw-utils'
+
+[plantuml-syntax]
+checkout = git clone 'https://github.com/aklt/plantuml-syntax.git' 'plantuml-syntax'
