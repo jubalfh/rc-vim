@@ -83,9 +83,6 @@ checkout = git clone 'https://github.com/wellle/targets.vim.git/' 'targets.vim'
 [vim-tmux-focus-events]
 checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/' 'vim-tmux-focus-events'
 
-[python-syntax]
-checkout = git clone 'https://github.com/hdima/python-syntax.git/' 'python-syntax'
-
 [vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
 
