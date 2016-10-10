@@ -3,17 +3,8 @@ git_update =
 	   git pull
 	   git submodule update --recursive
 
-[pep8]
-checkout = git clone https://github.com/vim-scripts/pep8.git/
-
-[tagbar]
-checkout = git clone https://github.com/majutsushi/tagbar.git/
-
 [vim-airline]
 checkout = git clone https://github.com/vim-airline/vim-airline.git/
-
-[vim-colors-solarized]
-checkout = git clone https://github.com/altercation/vim-colors-solarized.git/
 
 [vim-fugitive]
 checkout = git clone https://github.com/tpope/vim-fugitive.git/
@@ -83,9 +74,6 @@ checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/
 [vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
 
-[ListToggle]
-checkout = git clone 'https://github.com/Valloric/ListToggle.git' 'ListToggle'
-
 [vim-expand-region]
 checkout = git clone 'https://github.com/terryma/vim-expand-region.git' 'vim-expand-region'
 
@@ -97,9 +85,6 @@ checkout = git clone 'https://github.com/morhetz/gruvbox' 'gruvbox'
 
 [syntastic]
 checkout = git clone 'https://github.com/scrooloose/syntastic.git' 'syntastic'
-
-[vim-ctrlspace]
-checkout = git clone 'https://github.com/szw/vim-ctrlspace.git' 'vim-ctrlspace'
 
 [delimitMate]
 checkout = git clone 'https://github.com/Raimondi/delimitMate.git' 'delimitMate'
@@ -160,3 +145,12 @@ checkout = git clone 'https://github.com/elzr/vim-json.git' 'vim-json'
 
 [YouCompleteMe]
 checkout = git clone 'https://github.com/Valloric/YouCompleteMe.git' 'YouCompleteMe'
+
+[vim-rbenv]
+checkout = git clone 'https://github.com/tpope/vim-rbenv.git' 'vim-rbenv'
+
+[codi.vim]
+checkout = git clone 'https://github.com/metakirby5/codi.vim.git' 'codi.vim'
+
+[braceless.vim]
+checkout = git clone 'https://github.com/tweekmonster/braceless.vim.git/' 'braceless.vim'
