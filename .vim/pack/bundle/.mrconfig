@@ -3,154 +3,156 @@ git_update =
 	   git pull
 	   git submodule update --recursive
 
-[vim-airline]
-checkout = git clone https://github.com/vim-airline/vim-airline.git/
-
-[vim-fugitive]
-checkout = git clone https://github.com/tpope/vim-fugitive.git/
-
-[vim-misc]
-checkout = git clone https://github.com/xolox/vim-misc.git/
-
-[vim-pathogen]
+[opt/vim-pathogen]
 checkout = git clone https://github.com/tpope/vim-pathogen.git/
 
-[vim-repeat]
+
+[start/vim-airline]
+checkout = git clone https://github.com/vim-airline/vim-airline.git/
+
+[start/vim-fugitive]
+checkout = git clone https://github.com/tpope/vim-fugitive.git/
+
+[start/vim-misc]
+checkout = git clone https://github.com/xolox/vim-misc.git/
+
+[start/vim-repeat]
 checkout = git clone https://github.com/tpope/vim-repeat.git/
 
-[vim-surround]
+[start/vim-surround]
 checkout = git clone https://github.com/tpope/vim-surround.git/
 
-[vim-multiple-cursors]
+[start/vim-multiple-cursors]
 checkout = git clone 'https://github.com/terryma/vim-multiple-cursors.git/' 'vim-multiple-cursors'
 
-[editorconfig-vim]
+[start/editorconfig-vim]
 checkout = git clone 'https://github.com/editorconfig/editorconfig-vim.git/' 'editorconfig-vim'
 
-[vim-easytags]
+[start/vim-easytags]
 checkout = git clone 'https://github.com/xolox/vim-easytags.git/' 'vim-easytags'
 
-[vim-signify]
+[start/vim-signify]
 checkout = git clone 'https://github.com/mhinz/vim-signify.git/' 'vim-signify'
 
-[vim-paren-crosshairs]
+[start/vim-paren-crosshairs]
 checkout = git clone 'https://github.com/chreekat/vim-paren-crosshairs.git/' 'vim-paren-crosshairs'
 
 
-[detectindent]
+[start/detectindent]
 checkout = git clone 'https://github.com/ciaranm/detectindent.git/' 'detectindent'
 
-[GoldenView.Vim]
+[start/GoldenView.Vim]
 checkout = git clone 'https://github.com/zhaocai/GoldenView.Vim.git/' 'GoldenView.Vim'
 
-[vim-pencil]
+[start/vim-pencil]
 checkout = git clone 'https://github.com/reedes/vim-pencil.git/' 'vim-pencil'
 
-[vim-wordy]
+[start/vim-wordy]
 checkout = git clone 'https://github.com/reedes/vim-wordy.git/' 'vim-wordy'
 
-[vim-adjustscroll]
+[start/vim-adjustscroll]
 checkout = git clone 'https://github.com/dbakker/vim-adjustscroll.git/' 'vim-adjustscroll'
 
-[limelight.vim]
+[start/limelight.vim]
 checkout = git clone 'https://github.com/junegunn/limelight.vim.git/' 'limelight.vim'
 
-[goyo.vim]
+[start/goyo.vim]
 checkout = git clone 'https://github.com/junegunn/goyo.vim.git/' 'goyo.vim'
 
-[quickfix-reflector.vim]
+[start/quickfix-reflector.vim]
 checkout = git clone 'https://github.com/stefandtw/quickfix-reflector.vim.git/' 'quickfix-reflector.vim'
 
 
-[vim-ldapschema]
+[start/vim-ldapschema]
 checkout = git clone 'https://github.com/jubalfh/vim-ldapschema.git/' 'vim-ldapschema'
 
-[targets.vim]
+[start/targets.vim]
 checkout = git clone 'https://github.com/wellle/targets.vim.git/' 'targets.vim'
 
-[vim-tmux-focus-events]
+[start/vim-tmux-focus-events]
 checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/' 'vim-tmux-focus-events'
 
-[vim-diff-enhanced]
+[start/vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
 
-[vim-expand-region]
+[start/vim-expand-region]
 checkout = git clone 'https://github.com/terryma/vim-expand-region.git' 'vim-expand-region'
 
-[vim-interestingwords]
+[start/vim-interestingwords]
 checkout = git clone 'https://github.com/vasconcelloslf/vim-interestingwords.git' 'vim-interestingwords'
 
-[gruvbox]
+[start/gruvbox]
 checkout = git clone 'https://github.com/morhetz/gruvbox' 'gruvbox'
 
-[syntastic]
+[start/syntastic]
 checkout = git clone 'https://github.com/scrooloose/syntastic.git' 'syntastic'
 
-[delimitMate]
+[start/delimitMate]
 checkout = git clone 'https://github.com/Raimondi/delimitMate.git' 'delimitMate'
 
-[ansible-vim]
+[start/ansible-vim]
 checkout = git clone 'https://github.com/pearofducks/ansible-vim.git' 'ansible-vim'
 
-[terminus]
+[start/terminus]
 checkout = git clone 'https://github.com/wincent/terminus.git' 'terminus'
 
-[vim-pandoc]
+[start/vim-pandoc]
 checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc.git' 'vim-pandoc'
 
-[vim-pandoc-syntax]
+[start/vim-pandoc-syntax]
 checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc-syntax.git' 'vim-pandoc-syntax'
 
-[vimproc.vim]
+[start/vimproc.vim]
 checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
 
-[vim-table-mode]
+[start/vim-table-mode]
 checkout = git clone 'https://github.com/dhruvasagar/vim-table-mode.git' 'vim-table-mode'
 
-[airline-tablemode.vim]
+[start/airline-tablemode.vim]
 checkout = git clone 'https://github.com/retorillo/airline-tablemode.vim.git' 'airline-tablemode.vim'
 
-[indentLine]
+[start/indentLine]
 checkout = git clone 'https://github.com/Yggdroot/indentLine.git' 'indentLine'
 
-[vim-airline-themes]
+[start/vim-airline-themes]
 checkout = git clone 'https://github.com/vim-airline/vim-airline-themes.git' 'vim-airline-themes'
 
-[vim-endwise]
+[start/vim-endwise]
 checkout = git clone 'https://github.com/tpope/vim-endwise.git' 'vim-endwise'
 
-[vim-stay]
+[start/vim-stay]
 checkout = git clone 'https://github.com/kopischke/vim-stay.git' 'vim-stay'
 
-[vim-abolish]
+[start/vim-abolish]
 checkout = git clone 'https://github.com/tpope/vim-abolish.git' 'vim-abolish'
 
-[undotree]
+[start/undotree]
 checkout = git clone 'https://github.com/mbbill/undotree.git' 'undotree'
 
-[vim-capslock]
+[start/vim-capslock]
 checkout = git clone 'https://github.com/tpope/vim-capslock' 'vim-capslock'
 
-[vim-chef]
+[start/vim-chef]
 checkout = git clone 'https://github.com/vadv/vim-chef' 'vim-chef'
 
-[vim-addon-mw-utils]
+[start/vim-addon-mw-utils]
 checkout = git clone 'https://github.com/MarcWeber/vim-addon-mw-utils.git' 'vim-addon-mw-utils'
 
-[plantuml-syntax]
+[start/plantuml-syntax]
 checkout = git clone 'https://github.com/aklt/plantuml-syntax.git' 'plantuml-syntax'
 
-[vim-json]
+[start/vim-json]
 checkout = git clone 'https://github.com/elzr/vim-json.git' 'vim-json'
 
-[YouCompleteMe]
+[start/YouCompleteMe]
 checkout = git clone 'https://github.com/Valloric/YouCompleteMe.git' 'YouCompleteMe'
+fixups = python install.py
 
-[vim-rbenv]
+[start/vim-rbenv]
 checkout = git clone 'https://github.com/tpope/vim-rbenv.git' 'vim-rbenv'
 
-[codi.vim]
+[start/codi.vim]
 checkout = git clone 'https://github.com/metakirby5/codi.vim.git' 'codi.vim'
 
-[braceless.vim]
+[start/braceless.vim]
 checkout = git clone 'https://github.com/tweekmonster/braceless.vim.git/' 'braceless.vim'
