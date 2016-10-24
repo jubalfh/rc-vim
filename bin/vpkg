@@ -226,19 +226,20 @@ config::update() {
 
 vpkg::prep() {
     [[ -f "$HOME/.mrtrust" ]] || touch "$HOME/.mrtrust"
+
     grep -q "${mrconfig}" "$HOME/.mrtrust" || \
         echo "${mrconfig}" >> "$HOME/.mrtrust"
+
     for dir in undo backup; do
         [ -d "${dir}" ] || mkdir -p "${vimdir}/${dir}"
     done
-    [[ -d "${bundles}" ]] || {
-        mkdir -p "${bundles}/start"
-        mkdir -p "${bundles}/opt"
-    }
+    for dir in start opt; do
+        [[ -d "${bundles}/${dir}" ]] || mkdir -p "${bundles}/${dir}"
+    done
 
     if [[ -d "${vimdir}/bundle" ]]; then
         if [[ -d "${vimdir}/bundle/vim-pathogen" ]]; then
-            mv "${vimdir}/bundle/vim-pathogen" "${bundles}/opt/"
+            mv -v "${vimdir}/bundle/vim-pathogen" "${bundles}/opt/vim-pathogen"
             mv "${vimdir}/bundle"/* "${bundles}/start/"
             rm -f "${vimdir}/bundle/.init" || false
             rmdir "${vimdir}/bundle"
