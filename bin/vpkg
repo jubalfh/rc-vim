@@ -177,7 +177,7 @@ plugin::delete() {
 plugin::register() {
     local name
     read -r name <<< "$@"
-    mr register "${name}"
+    mr register "start/${name}"
     vcsh "${cfg_repo}" add "${mrconfig}"
     vcsh "${cfg_repo}" commit -m "Plugin ${name} registered in .mrconfig."
     if [[ -n "${vcsh_push}" ]]; then
@@ -188,7 +188,7 @@ plugin::register() {
 plugin::unregister() {
     local name
     read -r name <<< "$@"
-    initool --file "${mrconfig}" --remove-section "${name}" || true
+    initool --file "${mrconfig}" --remove-section "start/${name}" || true
     vcsh "${cfg_repo}" add "${mrconfig}"
     vcsh "${cfg_repo}" commit -m "Plugin ${name} unregistered from .mrconfig."
     if [[ -n "${vcsh_push}" ]]; then
