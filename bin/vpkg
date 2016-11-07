@@ -206,7 +206,7 @@ plugin::sync() {
     for ((i=0; i<${#dirs[@]}; i++)); do
         dir="${dirs[$i]}"
         if [[ ! "${plugins}" == *${dir}* ]]; then
-            rm -rf "${dir}" && echo "dangling directory removed: ${dir}."
+            rm -rf "start/${dir}" && echo "dangling directory removed: ${dir}."
         fi
     done
 }
