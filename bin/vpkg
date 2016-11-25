@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-# requires: git, mr, vcsh, curl
+# preserve the command line arguments
+export ORIG_CMDLINE="$@"
 
 # utility functions
+
+# bail on error with a helpful message
 on_error() {
     local prog fun lineno rc
     prog=$(basename $0)
@@ -12,6 +15,7 @@ on_error() {
     exit ${rc}
 }
 
+# exit with error code and helpful message
 error() {
     local message
     read -r message <<< "$@"
@@ -19,6 +23,7 @@ error() {
     exit 1
 }
 
+# ...
 usage() {
     echo "Usage: vpkg COMMAND [OPTIONS]"
     echo
@@ -29,6 +34,22 @@ usage() {
     echo "  update - update vim configuration"
     echo "  push - push local changes to the repository."
     exit 0
+}
+
+# verify if the dependencies are available, in the most simple way
+requires() {
+    local cmd i
+    local -a nope
+    for cmd in "$@"; do
+        command -v "${cmd}" &>/dev/null || nope+=("$cmd")
+    done
+    if ((${#nope[@]} > 0)); then
+        echo "Some of the required dependencies are not available:"
+        for ((i=0; i<${#nope[@]}; i++)); do
+            echo "* ${nope[$i]}"
+        done
+        error "please install the dependencies in order to proceed"
+    fi
 }
 
 # make sure mr is not an alias
@@ -106,7 +127,7 @@ git_exists() {
 reexec() {
     local message="$@"
     echo "${message}"
-    exec "$0" "${BASH_ARGV[*]}"
+    exec "$0" "${ORIG_CMDLINE}"
 }
 
 # plugin management
@@ -249,6 +270,7 @@ vpkg::prep() {
 }
 
 main() {
+    requires git mr vcsh curl
     # error handling
     [[ -z "${VPKG_DEBUG}" ]] || set -x
     set -o errexit
