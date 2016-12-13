@@ -162,5 +162,3 @@ checkout = git clone 'https://github.com/davidhalter/jedi-vim.git' 'jedi-vim'
 [start/asyncrun.vim]
 checkout = git clone 'https://github.com/skywind3000/asyncrun.vim' 'asyncrun.vim'
 
-[start/vim-slash]
-checkout = git clone 'https://github.com/junegunn/vim-slash' 'vim-slash'
