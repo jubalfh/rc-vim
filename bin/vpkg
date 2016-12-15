@@ -206,6 +206,30 @@ plugin::register() {
     fi
 }
 
+plugin::deactivate() {
+    local name
+    read -r name <<< "$@"
+    [[ -d "start/${name}" ]] && (
+        mv "start/${name}" "opt/${name}" && \
+            sed -i -e "s@start/${name}@opt/${name}@g" "${mrconfig}" && \
+            vcsh "${cfg_repo}" add "${mrconfig}" >/dev/null 2>&1 && \
+            vcsh "${cfg_repo}" commit -m "Plugin ${name} deactivated." >/dev/null 2>&1 && \
+            echo "Plugin ${name} deactivated. Use packadd ${name} to load manually."
+    )
+}
+
+plugin::activate() {
+    local name
+    read -r name <<< "$@"
+    [[ -d "opt/${name}" ]] && (
+        mv "opt/${name}" "start/${name}" && \
+            sed -i -e "s@opt/${name}@start/${name}@g" "${mrconfig}" && \
+            vcsh "${cfg_repo}" add "${mrconfig}" >/dev/null 2>&1 && \
+            vcsh "${cfg_repo}" commit -m "Plugin ${name} activated." >/dev/null 2>&1 && \
+            echo "Plugin ${name} will be loaded on startup."
+    )
+}
+
 plugin::unregister() {
     local name
     read -r name <<< "$@"
@@ -308,6 +332,10 @@ main() {
             ;;
         update)
             update::all "$@";;
+        activate|enable)
+            plugin::activate "$@";;
+        deactivate|disable)
+            plugin::deactivate "$@";;
         list)
             plugin::list ;;
         push)
