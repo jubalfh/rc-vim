@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # preserve the command line arguments
-export ORIG_CMDLINE="$@"
+export ORIG_CMDLINE=($@)
 
 # utility functions
 
 # bail on error with a helpful message
 on_error() {
     local prog fun lineno rc
-    prog=$(basename $0)
+    prog="$(basename $0)"
     read -r fun lineno rc <<< "$@"
     echo "error at ${fun} in ${prog}:${lineno} with exit code ${rc}."
     [[ -z "${VPKG_DEBUG}" ]] || caller
@@ -64,7 +64,7 @@ spinner() {
     tput civis
     while :; do
         for ((i=0; i<${#spinner[@]}; i++)); do
-            printf ${spinner[$i]}
+            printf "%s" "${spinner[$i]}"
             sleep .1
             printf "\b"
         done
@@ -125,9 +125,9 @@ git_exists() {
 }
 
 reexec() {
-    local message="$@"
+    local message="$*"
     echo "${message}"
-    exec "$0" "${ORIG_CMDLINE}"
+    exec "$0" "${ORIG_CMDLINE[@]}"
 }
 
 # plugin management
@@ -265,7 +265,7 @@ update::all() {
 config::update() {
     local sha; sha="$(sha512sum "$0")"
     echo -n "Updating configuration... ";
-    vcsh "${cfg_repo}" pull 2>&1 >/dev/null; echo "done."
+    vcsh "${cfg_repo}" pull >/dev/null 2>&1; echo "done."
     echo -n "${sha}" | sha512sum --check --status || reexec "$(basename $0) changed, re-executing"
 }
 
@@ -318,7 +318,7 @@ main() {
     vpkg::prep
 
     cd "${bundles}"
-    if [[ $# < 1 ]]; then
+    if (( $# < 1 )); then
         set -- "help"
     fi
     action="$1"; shift
@@ -347,4 +347,4 @@ main() {
     esac
 }
 
-main $@
+main "$@"
