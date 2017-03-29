@@ -162,6 +162,8 @@ checkout = git clone 'https://github.com/davidhalter/jedi-vim.git' 'jedi-vim'
 [start/asyncrun.vim]
 checkout = git clone 'https://github.com/skywind3000/asyncrun.vim' 'asyncrun.vim'
 
-
 [start/vim-cool]
 checkout = git clone 'https://github.com/romainl/vim-cool' 'vim-cool'
+
+[start/vim-tickscript]
+checkout = git clone 'https://github.com/nathanielc/vim-tickscript.git' 'vim-tickscript'
