@@ -164,3 +164,6 @@ checkout = git clone 'https://github.com/romainl/vim-cool' 'vim-cool'
 
 [start/vim-tickscript]
 checkout = git clone 'https://github.com/nathanielc/vim-tickscript.git' 'vim-tickscript'
+
+[start/vim-python-pep8-indent]
+checkout = git clone 'https://github.com/Vimjas/vim-python-pep8-indent.git' 'vim-python-pep8-indent'
