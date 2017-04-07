@@ -147,9 +147,6 @@ checkout = git clone 'https://github.com/elzr/vim-json.git' 'vim-json'
 [start/vim-rbenv]
 checkout = git clone 'https://github.com/tpope/vim-rbenv.git' 'vim-rbenv'
 
-[start/codi.vim]
-checkout = git clone 'https://github.com/metakirby5/codi.vim.git' 'codi.vim'
-
 [start/braceless.vim]
 checkout = git clone 'https://github.com/tweekmonster/braceless.vim.git/' 'braceless.vim'
 
