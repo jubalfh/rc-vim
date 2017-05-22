@@ -170,3 +170,6 @@ checkout = git clone 'https://github.com/Vimjas/vim-python-pep8-indent.git' 'vim
 
 [start/SimpylFold]
 checkout = git clone 'https://github.com/tmhedberg/SimpylFold.git' 'SimpylFold'
+
+[start/FastFold]
+checkout = git clone 'https://github.com/Konfekt/FastFold.git' 'FastFold'
