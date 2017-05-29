@@ -176,3 +176,6 @@ checkout = git clone 'https://github.com/Konfekt/FastFold.git' 'FastFold'
 
 [start/python-syntax]
 checkout = git clone 'https://github.com/vim-python/python-syntax.git' 'python-syntax'
+
+[start/vimwiki]
+checkout = git clone 'https://github.com/vimwiki/vimwiki.git' 'vimwiki'
