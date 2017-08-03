@@ -69,9 +69,6 @@ checkout = git clone 'https://github.com/jubalfh/vim-ldapschema.git/' 'vim-ldaps
 [start/targets.vim]
 checkout = git clone 'https://github.com/wellle/targets.vim.git/' 'targets.vim'
 
-[start/vim-tmux-focus-events]
-checkout = git clone 'https://github.com/tmux-plugins/vim-tmux-focus-events.git/' 'vim-tmux-focus-events'
-
 [start/vim-diff-enhanced]
 checkout = git clone 'https://github.com/chrisbra/vim-diff-enhanced.git' 'vim-diff-enhanced'
 
