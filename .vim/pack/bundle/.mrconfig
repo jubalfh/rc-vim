@@ -6,7 +6,6 @@ git_update =
 [opt/vim-pathogen]
 checkout = git clone https://github.com/tpope/vim-pathogen.git/
 
-
 [start/vim-airline]
 checkout = git clone https://github.com/vim-airline/vim-airline.git/
 
@@ -36,7 +35,6 @@ checkout = git clone 'https://github.com/mhinz/vim-signify.git/' 'vim-signify'
 
 [start/vim-paren-crosshairs]
 checkout = git clone 'https://github.com/chreekat/vim-paren-crosshairs.git/' 'vim-paren-crosshairs'
-
 
 [start/detectindent]
 checkout = git clone 'https://github.com/ciaranm/detectindent.git/' 'detectindent'
@@ -95,9 +93,6 @@ checkout = git clone 'https://github.com/wincent/terminus.git' 'terminus'
 
 [start/vim-pandoc]
 checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc.git' 'vim-pandoc'
-
-[start/vim-pandoc-syntax]
-checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc-syntax.git' 'vim-pandoc-syntax'
 
 [start/vimproc.vim]
 checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
@@ -179,3 +174,9 @@ checkout = git clone 'https://github.com/vimwiki/vimwiki.git' 'vimwiki'
 
 [start/vim-yaml]
 checkout = git clone 'https://github.com/avakhov/vim-yaml' 'vim-yaml'
+
+[start/vim-markdown]
+checkout = git clone 'https://github.com/plasticboy/vim-markdown.git' 'vim-markdown'
+
+[start/tabular]
+checkout = git clone 'https://github.com/godlygeek/tabular.git' 'tabular'
