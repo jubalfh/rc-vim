@@ -11,9 +11,8 @@ set breakindent
 set backspace=indent,eol,start
 set copyindent
 set noconfirm
-if !has("nvim")
+if !has('nvim')
     set cpoptions=ceFgns
-    set encoding=utf-8
 else
     set cpoptions=ceFns
 endif
@@ -73,7 +72,7 @@ set undolevels=1200
 set undofile
 
 " colorschemes and gui
-if has("gui_running")
+if has('gui_running')
     set guifont=Fira\ Mono\ 13
     set guioptions=acegimrLT
     set mousehide
@@ -82,7 +81,7 @@ endif
 colorscheme gruvbox
 highlight SpecialKey ctermfg=11 ctermbg=8
 
-if &term =~ '256color'
+if &term =~? '256color'
   " Disable Background Color Erase (BCE) so that color schemes work
   " properly within 256-color terminals
   set t_ut=

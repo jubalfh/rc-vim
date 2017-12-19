@@ -1,6 +1,6 @@
 " generic mappings
 
-let mapleader = "\<Space>\<Space>"
+let g:mapleader = "\<Space>\<Space>"
 
 nnoremap <silent> <leader><space> :noh<cr>
 nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
