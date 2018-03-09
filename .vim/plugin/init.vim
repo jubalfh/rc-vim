@@ -13,12 +13,12 @@ set copyindent
 set noconfirm
 if !has('nvim')
     set cpoptions=ceFgns
+    set esckeys
 else
     set cpoptions=ceFns
 endif
 set nodigraph
 set noerrorbells
-set esckeys
 set magic
 
 set hidden

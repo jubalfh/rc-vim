@@ -257,7 +257,7 @@ plugin::sync() {
 }
 
 plugin::helptags() {
-    vim -MR -T dumb -V -E -c 'packadd vim-pathogen | helptags ALL | q!' >/dev/null 2>&1
+    vim -MR -T dumb -V -E -c 'packadd vim-pathogen | call pathogen#helptags() | qa!' >/dev/null 2>&1
 }
 
 update::all() {
