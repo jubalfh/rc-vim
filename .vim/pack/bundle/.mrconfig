@@ -179,4 +179,4 @@ checkout = git clone 'https://github.com/godlygeek/tabular.git' 'tabular'
 checkout = git clone 'https://github.com/tpope/vim-rsi.git' 'vim-rsi'
 
 [start/vim-shell]
-checkout = git clone 'git@github.com:xolox/vim-shell.git' 'vim-shell'
+checkout = git clone 'https://github.com/xolox/vim-shell.git' 'vim-shell'
