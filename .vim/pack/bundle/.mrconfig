@@ -79,9 +79,6 @@ checkout = git clone 'https://github.com/vasconcelloslf/vim-interestingwords.git
 [start/gruvbox]
 checkout = git clone 'https://github.com/morhetz/gruvbox' 'gruvbox'
 
-[start/syntastic]
-checkout = git clone 'https://github.com/scrooloose/syntastic.git' 'syntastic'
-
 [start/delimitMate]
 checkout = git clone 'https://github.com/Raimondi/delimitMate.git' 'delimitMate'
 
@@ -142,9 +139,6 @@ checkout = git clone 'https://github.com/tpope/vim-rbenv.git' 'vim-rbenv'
 [start/braceless.vim]
 checkout = git clone 'https://github.com/tweekmonster/braceless.vim.git/' 'braceless.vim'
 
-[start/vim-mucomplete]
-checkout = git clone 'https://github.com/lifepillar/vim-mucomplete.git' 'vim-mucomplete'
-
 [start/jedi-vim]
 checkout = git clone 'https://github.com/davidhalter/jedi-vim.git' 'jedi-vim'
 
@@ -153,15 +147,6 @@ checkout = git clone 'https://github.com/skywind3000/asyncrun.vim' 'asyncrun.vim
 
 [start/vim-cool]
 checkout = git clone 'https://github.com/romainl/vim-cool' 'vim-cool'
-
-[start/vim-tickscript]
-checkout = git clone 'https://github.com/nathanielc/vim-tickscript.git' 'vim-tickscript'
-
-[start/vim-python-pep8-indent]
-checkout = git clone 'https://github.com/Vimjas/vim-python-pep8-indent.git' 'vim-python-pep8-indent'
-
-[start/python-syntax]
-checkout = git clone 'https://github.com/vim-python/python-syntax.git' 'python-syntax'
 
 [start/vimwiki]
 checkout = git clone 'https://github.com/vimwiki/vimwiki.git' 'vimwiki'
@@ -183,3 +168,25 @@ checkout = git clone 'https://github.com/xolox/vim-shell.git' 'vim-shell'
 
 [start/vim-puppet]
 checkout = git clone 'https://github.com/rodjek/vim-puppet.git' 'vim-puppet'
+
+[start/quick-scope]
+checkout = git clone 'https://github.com/unblevable/quick-scope.git' 'quick-scope'
+
+[opt/ultisnips]
+checkout = git clone 'https://github.com/SirVer/ultisnips.git' 'ultisnips'
+
+
+[start/ale]
+checkout = git clone 'https://github.com/w0rp/ale.git/' 'ale'
+
+[start/isort]
+checkout = git clone 'https://github.com/timothycrosley/isort.git/' 'isort'
+
+[start/completor.vim]
+checkout = git clone 'https://github.com/maralla/completor.vim.git/' 'completor.vim'
+
+[start/python-mode]
+checkout = git clone 'https://github.com/python-mode/python-mode.git/' 'python-mode'
+
+[start/vim-mucomplete]
+checkout = git clone 'https://github.com/lifepillar/vim-mucomplete.git/' 'vim-mucomplete'
