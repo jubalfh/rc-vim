@@ -4,7 +4,8 @@
 
 if has('win32')
     " I MEAN ONE CONF. FOR ALL OF THEM. EVERY-FUCKING-WHERE.
-    set runtimepath^=~/.vim runtimepath^=~/.vim/after
+    set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
+    set t_Co=256
     source ~/.vimrc
 endif

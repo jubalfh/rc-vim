@@ -190,3 +190,6 @@ checkout = git clone 'https://github.com/python-mode/python-mode.git/' 'python-m
 
 [start/vim-mucomplete]
 checkout = git clone 'https://github.com/lifepillar/vim-mucomplete.git/' 'vim-mucomplete'
+
+[start/vim-ps1]
+checkout = git clone 'https://github.com/PProvost/vim-ps1.git' 'vim-ps1'
