@@ -9,5 +9,9 @@ if !has('packages')
   execute pathogen#helptags()
 endif
 
+if has("termguicolors")
+  set termguicolors
+endif
+
 syntax on
 filetype plugin indent on

@@ -70,14 +70,16 @@ set backup
 set undodir=~/.vim/undo
 set undolevels=1200
 set undofile
+set viewdir=~/.vim/view
 
 " colorschemes and gui
 if has('gui_running')
-    set guifont=Fira\ Mono\ 13
-    set guioptions=acegimrLT
+    set guifont=Iosevka_SS07\ 13,Iosevka_SS07:h13,Iosevka_SS07:h13:qCLEARTYPE
+    set guioptions=acegimrL
     set mousehide
 endif
 
+set background=dark
 colorscheme gruvbox
 highlight SpecialKey ctermfg=11 ctermbg=8
 
