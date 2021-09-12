@@ -4,6 +4,8 @@
 
 if has('win32')
     " I MEAN ONE CONF. FOR ALL OF THEM. EVERY-FUCKING-WHERE.
+    set pythonthreedll=python39.dll
+    set pythonthreehome=~/scoop/apps/python/current
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
     source ~/.vimrc

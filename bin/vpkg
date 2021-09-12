@@ -41,7 +41,7 @@ requires() {
     local cmd i
     local -a nope
     for cmd in "$@"; do
-        command -v "${cmd}" &>/dev/null || nope+=("$cmd")
+        command -v "${cmd}" &> /dev/null || nope+=("$cmd")
     done
     if ((${#nope[@]} > 0)); then
         echo "Some of the required dependencies are not available:"
@@ -73,9 +73,9 @@ spinner() {
 
 # work around places that don't use reasonable find
 find() {
-    if command -v gfind &>/dev/null; then
+    if command -v gfind &>${VPKG_LOGFILE}; then
         cmd="gfind"
-    elif command -v find &>/dev/null; then
+    elif command -v find &>${VPKG_LOGFILE}; then
         cmd="find"
     else
         error "no suitable find command found"
@@ -92,7 +92,7 @@ initool() {
 uri_exists() {
     local uri status
     read -r uri <<< "$@"
-    status=$(curl -s -o /dev/null -w "%{http_code}" "${uri}")
+    status=$(curl -s -o ${VPKG_LOGFILE} -w "%{http_code}" "${uri}")
     if [[ "${status}" =~ [23][0-9][0-9] ]]; then
         return 0
     else
@@ -105,7 +105,7 @@ github_exists() {
     local user name status
     read -r user name <<< "$@"
     uri="https://api.github.com/repos/${user}/${name}"
-    status=$(curl -s -o /dev/null -w "%{http_code}" "${uri}")
+    status=$(curl -s -o ${VPKG_LOGFILE} -w "%{http_code}" "${uri}")
     if [[ "${status}" =~ [2][0-9][0-9] ]]; then
         return 0
     else
@@ -116,7 +116,7 @@ github_exists() {
 git_exists() {
     local uri status rc
     read -r uri <<< "$@"
-    status=$(rc=0; git ls-remote "${uri}" &>/dev/null || rc=$?; echo $rc)
+    status=$(rc=0; git ls-remote "${uri}" &>${VPKG_LOGFILE} || rc=$?; echo $rc)
     if [[ "${status}" == 128 ]]; then
         return 1
     else
@@ -212,8 +212,8 @@ plugin::deactivate() {
     [[ -d "start/${name}" ]] && (
         mv "start/${name}" "opt/${name}" && \
             sed -i -e "s@start/${name}@opt/${name}@g" "${mrconfig}" && \
-            vcsh "${cfg_repo}" add "${mrconfig}" >/dev/null 2>&1 && \
-            vcsh "${cfg_repo}" commit -m "Plugin ${name} deactivated." >/dev/null 2>&1 && \
+            vcsh "${cfg_repo}" add "${mrconfig}" >${VPKG_LOGFILE} 2>&1 && \
+            vcsh "${cfg_repo}" commit -m "Plugin ${name} deactivated." >${VPKG_LOGFILE} 2>&1 && \
             echo "Plugin ${name} deactivated. Use packadd ${name} to load manually."
     )
 }
@@ -224,8 +224,8 @@ plugin::activate() {
     [[ -d "opt/${name}" ]] && (
         mv "opt/${name}" "start/${name}" && \
             sed -i -e "s@opt/${name}@start/${name}@g" "${mrconfig}" && \
-            vcsh "${cfg_repo}" add "${mrconfig}" >/dev/null 2>&1 && \
-            vcsh "${cfg_repo}" commit -m "Plugin ${name} activated." >/dev/null 2>&1 && \
+            vcsh "${cfg_repo}" add "${mrconfig}" >${VPKG_LOGFILE} 2>&1 && \
+            vcsh "${cfg_repo}" commit -m "Plugin ${name} activated." >${VPKG_LOGFILE} 2>&1 && \
             echo "Plugin ${name} will be loaded on startup."
     )
 }
@@ -257,7 +257,7 @@ plugin::sync() {
 }
 
 plugin::helptags() {
-    vim -MR -T dumb -V -E -c 'packadd vim-pathogen | call pathogen#helptags() | qa!' >/dev/null 2>&1
+    vim -MR -T dumb -V -E -c 'packadd vim-pathogen | call pathogen#helptags() | qa!' >${VPKG_LOGFILE} 2>&1
 }
 
 update::all() {
@@ -270,7 +270,8 @@ update::all() {
 config::update() {
     local sha; sha="$(sha512sum "$0")"
     echo -n "Updating configuration... ";
-    vcsh "${cfg_repo}" pull >/dev/null 2>&1; echo "done."
+    # vcsh "${cfg_repo}" pull >${VPKG_LOGFILE} 2>&1; echo "done."
+    vcsh "${cfg_repo}" pull; echo "done."
     echo -n "${sha}" | sha512sum --check --status || reexec "$(basename $0) changed, re-executing"
 }
 
