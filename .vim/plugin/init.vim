@@ -74,8 +74,8 @@ set viewdir=~/.vim/view
 
 " colorschemes and gui
 if has('gui_running')
-    set guifont=Iosevka_SS07\ 13,Iosevka_SS07:h13,Iosevka_SS07:h13:qCLEARTYPE
-    set guioptions-=mrRlL
+    set guioptions=agk
+    set guifont=Iosevka\ Term\ SS07\ 12,Iosevka\ SS07:h12,Iosevka\ SS07:h12:qCLEARTYPE
     set mousehide
 endif
 
