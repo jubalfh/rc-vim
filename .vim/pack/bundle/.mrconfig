@@ -193,3 +193,8 @@ checkout = git clone 'https://github.com/lifepillar/vim-mucomplete.git/' 'vim-mu
 
 [start/vim-ps1]
 checkout = git clone 'https://github.com/PProvost/vim-ps1.git' 'vim-ps1'
+
+
+
+[start/vim-nftables]
+checkout = git clone 'https://github.com/nfnty/vim-nftables.git/' 'vim-nftables'
