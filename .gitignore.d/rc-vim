@@ -2,6 +2,8 @@
 !/bin
 !/bin/vpkg
 !/.vim/
+!/.vim/pack
+!/.vim/pack/bundle
 !/.vim/pack/bundle/.mrconfig
 !/.vim/after/
 !/.vim/after/**
