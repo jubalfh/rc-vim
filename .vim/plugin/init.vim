@@ -44,6 +44,7 @@ set wrap
 set nofoldenable
 set formatoptions=qrnl1
 set colorcolumn=85
+set nofixendofline
 
 set scrolloff=2
 set laststatus=2
