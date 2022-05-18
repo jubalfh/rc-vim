@@ -88,9 +88,6 @@ checkout = git clone 'https://github.com/pearofducks/ansible-vim.git' 'ansible-v
 [start/terminus]
 checkout = git clone 'https://github.com/wincent/terminus.git' 'terminus'
 
-[start/vim-pandoc]
-checkout = git clone 'https://github.com/vim-pandoc/vim-pandoc.git' 'vim-pandoc'
-
 [start/vimproc.vim]
 checkout = git clone 'https://github.com/Shougo/vimproc.vim.git' 'vimproc.vim'
 
@@ -121,9 +118,6 @@ checkout = git clone 'https://github.com/mbbill/undotree.git' 'undotree'
 [start/vim-capslock]
 checkout = git clone 'https://github.com/tpope/vim-capslock' 'vim-capslock'
 
-[start/vim-chef]
-checkout = git clone 'https://github.com/vadv/vim-chef' 'vim-chef'
-
 [start/vim-addon-mw-utils]
 checkout = git clone 'https://github.com/MarcWeber/vim-addon-mw-utils.git' 'vim-addon-mw-utils'
 
@@ -132,9 +126,6 @@ checkout = git clone 'https://github.com/aklt/plantuml-syntax.git' 'plantuml-syn
 
 [start/vim-json]
 checkout = git clone 'https://github.com/elzr/vim-json.git' 'vim-json'
-
-[start/vim-rbenv]
-checkout = git clone 'https://github.com/tpope/vim-rbenv.git' 'vim-rbenv'
 
 [start/braceless.vim]
 checkout = git clone 'https://github.com/tweekmonster/braceless.vim.git/' 'braceless.vim'
@@ -147,9 +138,6 @@ checkout = git clone 'https://github.com/skywind3000/asyncrun.vim' 'asyncrun.vim
 
 [start/vim-cool]
 checkout = git clone 'https://github.com/romainl/vim-cool' 'vim-cool'
-
-[start/vimwiki]
-checkout = git clone 'https://github.com/vimwiki/vimwiki.git' 'vimwiki'
 
 [start/vim-yaml]
 checkout = git clone 'https://github.com/avakhov/vim-yaml' 'vim-yaml'
@@ -165,9 +153,6 @@ checkout = git clone 'https://github.com/tpope/vim-rsi.git' 'vim-rsi'
 
 [start/vim-shell]
 checkout = git clone 'https://github.com/xolox/vim-shell.git' 'vim-shell'
-
-[start/vim-puppet]
-checkout = git clone 'https://github.com/rodjek/vim-puppet.git' 'vim-puppet'
 
 [start/quick-scope]
 checkout = git clone 'https://github.com/unblevable/quick-scope.git' 'quick-scope'
@@ -198,3 +183,4 @@ checkout = git clone 'https://github.com/PProvost/vim-ps1.git' 'vim-ps1'
 
 [start/vim-nftables]
 checkout = git clone 'https://github.com/nfnty/vim-nftables.git/' 'vim-nftables'
+
