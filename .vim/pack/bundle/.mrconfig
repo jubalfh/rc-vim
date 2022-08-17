@@ -161,9 +161,6 @@ checkout = git clone 'https://github.com/unblevable/quick-scope.git' 'quick-scop
 checkout = git clone 'https://github.com/SirVer/ultisnips.git' 'ultisnips'
 
 
-[start/ale]
-checkout = git clone 'https://github.com/w0rp/ale.git/' 'ale'
-
 [start/isort]
 checkout = git clone 'https://github.com/timothycrosley/isort.git/' 'isort'
 
