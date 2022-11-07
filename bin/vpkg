@@ -132,54 +132,54 @@ reexec() {
 
 # plugin management
 
-plugin::list() {
+plugin_list() {
     gawk '$0 ~ /\[.*\]/ && $0 !~ /(DEFAULT|pathogen)/ { gsub(/[\[\]]/, ""); gsub(/[^\/]+\//, ""); print }' "${mrconfig}"
 }
 
-plugin::add() {
+plugin_add() {
     local src name uri user
     src="$1"; shift
     case "${src}" in 
         github)
             read -r user name <<< "$@"
-            plugin::add::github "${user}" "${name}" && plugin::register "${name}"
+            plugin_add_github "${user}" "${name}" && plugin_register "${name}"
             ;;
         git)
             read -r uri name <<< "$@"
             : ${name:=$(basename ${uri/#@(http?|git*|ssh):\/\/} .git)}
-            plugin::add::git "${name}" "${uri}" && plugin::register "${name}"
+            plugin_add_git "${name}" "${uri}" && plugin_register "${name}"
             ;;
     esac
 }
 
-plugin::add::github() {
+plugin_add_github() {
     local user name uri
     read -r user name <<< "$@"
     github_exists "${user}" "${name}" || error "no github repository ${name} found for user ${user}"
     uri="https://github.com/${user}/${name}.git/"
-    plugin::add::git "${name}" "${uri}"
+    plugin_add_git "${name}" "${uri}"
 }
 
-plugin::add::git() {
+plugin_add_git() {
     local name uri
     read -r name uri <<< "$@"
     git_exists "${uri}" || error "no git repository ${name} exists at ${uri}"
     [[ -d "start/${name}" ]] && error "plugin directory ${name} already exists" || git clone --recursive "${uri}" "start/${name}"
 }
 
-plugin::add::hg() {
+plugin_add_hg() {
     local name uri
     read -r name uri <<< "$@"
     [[ -d "${name}" ]] && return 1 || hg clone "${uri}" "${name}"
 }
 
-plugin::add::svn() {
+plugin_add_svn() {
     local name uri
     read -r name uri <<< "$@"
     [[ -d "${name}" ]] && return 1 || svn co "${uri}" "${name}"
 }
 
-plugin::update() {
+plugin_update() {
     if [[ "$1" =~ (-v|--verbose) ]]; then
         mr update
     else
@@ -188,14 +188,14 @@ plugin::update() {
     fi
 }
 
-plugin::delete() {
+plugin_delete() {
     local name
     read -r name <<< "$@"
     [[ -d "start/${name}" ]] && rm -rf "start/${name}"
-    plugin::unregister "${name}"
+    plugin_unregister "${name}"
 }
 
-plugin::register() {
+plugin_register() {
     local name
     read -r name <<< "$@"
     mr register "start/${name}"
@@ -206,7 +206,7 @@ plugin::register() {
     fi
 }
 
-plugin::deactivate() {
+plugin_deactivate() {
     local name
     read -r name <<< "$@"
     [[ -d "start/${name}" ]] && (
@@ -218,7 +218,7 @@ plugin::deactivate() {
     )
 }
 
-plugin::activate() {
+plugin_activate() {
     local name
     read -r name <<< "$@"
     [[ -d "opt/${name}" ]] && (
@@ -230,7 +230,7 @@ plugin::activate() {
     )
 }
 
-plugin::unregister() {
+plugin_unregister() {
     local name
     read -r name <<< "$@"
     initool --file "${mrconfig}" --remove-section "start/${name}" || true
@@ -241,10 +241,10 @@ plugin::unregister() {
     fi
 }
 
-plugin::sync() {
+plugin_sync() {
     local plugins dir
     local -a dirs
-    plugins=$(plugin::list)
+    plugins=$(plugin_list)
     while read -r dir; do
         dirs+=("${dir}")
     done < <(find "${bundles}/start" -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
@@ -256,18 +256,18 @@ plugin::sync() {
     done
 }
 
-plugin::helptags() {
+plugin_helptags() {
     vim -MR -T dumb -V -E -c 'packadd vim-pathogen | call pathogen#helptags() | qa!' >${VPKG_LOGFILE} 2>&1
 }
 
-update::all() {
-    config::update "$@"
-    plugin::update "$@"
-    plugin::sync "$@"
-    plugin::helptags
+update_all() {
+    config_update "$@"
+    plugin_update "$@"
+    plugin_sync "$@"
+    plugin_helptags
 }
 
-config::update() {
+config_update() {
     local sha; sha="$(sha512sum "$0")"
     echo -n "Updating configuration... ";
     # vcsh "${cfg_repo}" pull >${VPKG_LOGFILE} 2>&1; echo "done."
@@ -275,7 +275,7 @@ config::update() {
     echo -n "${sha}" | sha512sum --check --status || reexec "$(basename $0) changed, re-executing"
 }
 
-vpkg::prep() {
+vpkg_prep() {
     [[ -f "$HOME/.mrtrust" ]] || touch "$HOME/.mrtrust"
 
     grep -q "${mrconfig}" "$HOME/.mrtrust" || \
@@ -321,7 +321,7 @@ main() {
     export bundles="${vimdir}/pack/bundle"
     export mrconfig="${bundles}/.mrconfig"
     export cfg_repo="rc-vim"
-    vpkg::prep
+    vpkg_prep
 
     cd "${bundles}"
     if (( $# < 1 )); then
@@ -330,25 +330,25 @@ main() {
     action="$1"; shift
     case "${action}" in
         add)
-            plugin::add "$@" ;;
+            plugin_add "$@" ;;
         del|delete|remove)
             for plugin in "$@"; do
-                plugin::delete "${plugin}"
+                plugin_delete "${plugin}"
             done
             ;;
         update)
-            update::all "$@";;
+            update_all "$@";;
         activate|enable)
-            plugin::activate "$@";;
+            plugin_activate "$@";;
         deactivate|disable)
-            plugin::deactivate "$@";;
+            plugin_deactivate "$@";;
         list)
-            plugin::list ;;
+            plugin_list ;;
         push)
             vcsh push ;;
         sync)
-            plugin::sync
-            plugin::helptags
+            plugin_sync
+            plugin_helptags
             ;;
         help|*)
             usage ;;
