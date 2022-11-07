@@ -181,3 +181,6 @@ checkout = git clone 'https://github.com/PProvost/vim-ps1.git' 'vim-ps1'
 [start/vim-nftables]
 checkout = git clone 'https://github.com/nfnty/vim-nftables.git/' 'vim-nftables'
 
+
+[start/ale]
+checkout = git clone 'https://github.com/dense-analysis/ale.git/' 'ale'
