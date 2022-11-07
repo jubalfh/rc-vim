@@ -1,5 +1,6 @@
 " set some defaults
 
+set nocompatible
 set modeline
 
 set noautoread
@@ -11,12 +12,13 @@ set breakindent
 set backspace=indent,eol,start
 set copyindent
 set noconfirm
-if !has('nvim')
-    set cpoptions=ceFgns
-    set esckeys
+set cpoptions-=aA
+if has("nvim")
+    set cpoptions+=ceFns
 else
-    set cpoptions=ceFns
+    set cpoptions+=ceFgns
 endif
+set shortmess+=I
 set nodigraph
 set noerrorbells
 set magic
@@ -83,12 +85,6 @@ endif
 set background=dark
 colorscheme gruvbox
 highlight SpecialKey ctermfg=11 ctermbg=8
-
-if &term =~? '256color'
-  " Disable Background Color Erase (BCE) so that color schemes work
-  " properly within 256-color terminals
-  set t_ut=
-endif
 
 " load specific configuration
 runtime local
