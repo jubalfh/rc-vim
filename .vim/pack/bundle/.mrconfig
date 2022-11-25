@@ -184,3 +184,6 @@ checkout = git clone 'https://github.com/nfnty/vim-nftables.git/' 'vim-nftables'
 
 [start/ale]
 checkout = git clone 'https://github.com/dense-analysis/ale.git/' 'ale'
+
+[start/splitjoin.vim]
+checkout = git clone 'https://github.com/andrewradev/splitjoin.vim.git/' 'splitjoin.vim'
