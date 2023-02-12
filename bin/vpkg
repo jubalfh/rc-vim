@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC2250
+
 # preserve the command line arguments
 export ORIG_CMDLINE=($@)
 
@@ -8,7 +10,7 @@ export ORIG_CMDLINE=($@)
 # bail on error with a helpful message
 on_error() {
     local prog fun lineno rc
-    prog="$(basename $0)"
+    prog="$(basename "$0")"
     read -r fun lineno rc <<< "$@"
     echo "error at ${fun} in ${prog}:${lineno} with exit code ${rc}."
     [[ -z "${VPKG_DEBUG}" ]] || caller
@@ -60,22 +62,22 @@ mr() {
 spinner() {
     trap "tput cnorm; exit" TERM
     local -a spinner
-    spinner=("◴" "◷" "◶" "◵")
+    spinner=("🕛" "🕒" "🕕" "🕘")
     tput civis
     while :; do
         for ((i=0; i<${#spinner[@]}; i++)); do
             printf "%s" "${spinner[$i]}"
             sleep .1
-            printf "\b"
+            printf "\b\b"
         done
     done
 }
 
 # work around places that don't use reasonable find
 find() {
-    if command -v gfind &>${VPKG_LOGFILE}; then
+    if command -v gfind &>"${VPKG_LOGFILE}"; then
         cmd="gfind"
-    elif command -v find &>${VPKG_LOGFILE}; then
+    elif command -v find &>"${VPKG_LOGFILE}"; then
         cmd="find"
     else
         error "no suitable find command found"
@@ -92,7 +94,7 @@ initool() {
 uri_exists() {
     local uri status
     read -r uri <<< "$@"
-    status=$(curl -s -o ${VPKG_LOGFILE} -w "%{http_code}" "${uri}")
+    status=$(curl -s -o "${VPKG_LOGFILE}" -w "%{http_code}" "${uri}")
     if [[ "${status}" =~ [23][0-9][0-9] ]]; then
         return 0
     else
@@ -105,7 +107,7 @@ github_exists() {
     local user name status
     read -r user name <<< "$@"
     uri="https://api.github.com/repos/${user}/${name}"
-    status=$(curl -s -o ${VPKG_LOGFILE} -w "%{http_code}" "${uri}")
+    status=$(curl -s -o "${VPKG_LOGFILE}" -w "%{http_code}" "${uri}")
     if [[ "${status}" =~ [2][0-9][0-9] ]]; then
         return 0
     else
@@ -116,7 +118,7 @@ github_exists() {
 git_exists() {
     local uri status rc
     read -r uri <<< "$@"
-    status=$(rc=0; git ls-remote "${uri}" &>${VPKG_LOGFILE} || rc=$?; echo $rc)
+    status=$(rc=0; git ls-remote "${uri}" &>"${VPKG_LOGFILE}" || rc=$?; echo $rc)
     if [[ "${status}" == 128 ]]; then
         return 1
     else
@@ -139,14 +141,14 @@ plugin_list() {
 plugin_add() {
     local src name uri user
     src="$1"; shift
-    case "${src}" in 
+    case "${src}" in
         github)
             read -r user name <<< "$@"
             plugin_add_github "${user}" "${name}" && plugin_register "${name}"
             ;;
         git)
             read -r uri name <<< "$@"
-            : ${name:=$(basename ${uri/#@(http?|git*|ssh):\/\/} .git)}
+            : "${name:="$(basename "${uri/#@(http?|git*|ssh):\/\/}" .git)"}"
             plugin_add_git "${name}" "${uri}" && plugin_register "${name}"
             ;;
     esac
@@ -257,7 +259,16 @@ plugin_sync() {
 }
 
 plugin_helptags() {
-    vim -MR -T dumb -V -E -c 'packadd vim-pathogen | call pathogen#helptags() | qa!' >${VPKG_LOGFILE} 2>&1
+   local vim_cmd="nvim" vim_script="packadd vim-pathogen | call pathogen#helptags() | qa!"
+   command -v "${vim_cmd}" &> /dev/null || vim_cmd="vim"
+   case "${vim_cmd}" in
+      nvim)
+         nvim -MR -Es -V -E -c "${vim_script}" >"${VPKG_LOGFILE}" 2>&1
+         ;;
+      vim)
+         vim -MR -T dumb -V -E -c "${vim_script}" >"${VPKG_LOGFILE}" 2>&1
+         ;;
+   esac
 }
 
 update_all() {
@@ -268,11 +279,11 @@ update_all() {
 }
 
 config_update() {
-    local sha; sha="$(sha512sum "$0")"
-    echo -n "Updating configuration... ";
-    # vcsh "${cfg_repo}" pull >${VPKG_LOGFILE} 2>&1; echo "done."
-    vcsh "${cfg_repo}" pull; echo "done."
-    echo -n "${sha}" | sha512sum --check --status || reexec "$(basename $0) changed, re-executing"
+    local sha
+    sha="$(sha512sum "$0")"
+    echo -n "Updating configuration... "
+    vcsh "${cfg_repo}" pull >/dev/null 2>&1 && echo "done." || echo "failed."
+    echo -n "${sha}" | sha512sum --check --status || reexec "$(basename "$0") changed, re-executing"
 }
 
 vpkg_prep() {
@@ -284,23 +295,14 @@ vpkg_prep() {
     for dir in undo backup; do
         [ -d "${dir}" ] || mkdir -p "${vimdir}/${dir}"
     done
+
     for dir in start opt; do
         [[ -d "${bundles}/${dir}" ]] || mkdir -p "${bundles}/${dir}"
     done
-
-    if [[ -d "${vimdir}/bundle" ]]; then
-        if [[ -d "${vimdir}/bundle/vim-pathogen" ]]; then
-            mv -v "${vimdir}/bundle/vim-pathogen" "${bundles}/opt/vim-pathogen"
-            mv "${vimdir}/bundle"/* "${bundles}/start/"
-            rm -f "${vimdir}/bundle/.init" || false
-            rmdir "${vimdir}/bundle"
-            echo "Plugin directory updated to ${bundles}/start."
-        fi
-    fi
 }
 
 main() {
-    requires git mr vcsh curl
+    requires vim git mr vcsh curl
     # error handling
     [[ -z "${VPKG_DEBUG}" ]] || set -x
     set -o errexit
@@ -310,7 +312,7 @@ main() {
     trap 'on_error ${FUNCNAME[0]} ${LINENO} ${?}' ERR INT HUP
 
     : "${VPKG_LOGFILE:=/dev/null}"
-    exec 2>${VPKG_LOGFILE}
+    exec 2>"${VPKG_LOGFILE}"
 
     # sanitize the environment a bit...
     for envvar in GIT_DIR VCSH_DIRECTORY VCSH_REPO_NAME VCSH_COMMAND; do

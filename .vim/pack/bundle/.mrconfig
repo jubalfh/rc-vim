@@ -60,7 +60,6 @@ checkout = git clone 'https://github.com/junegunn/goyo.vim.git/' 'goyo.vim'
 [start/quickfix-reflector.vim]
 checkout = git clone 'https://github.com/stefandtw/quickfix-reflector.vim.git/' 'quickfix-reflector.vim'
 
-
 [start/vim-ldapschema]
 checkout = git clone 'https://github.com/jubalfh/vim-ldapschema.git/' 'vim-ldapschema'
 
@@ -160,7 +159,6 @@ checkout = git clone 'https://github.com/unblevable/quick-scope.git' 'quick-scop
 [opt/ultisnips]
 checkout = git clone 'https://github.com/SirVer/ultisnips.git' 'ultisnips'
 
-
 [start/isort]
 checkout = git clone 'https://github.com/timothycrosley/isort.git/' 'isort'
 
@@ -176,11 +174,8 @@ checkout = git clone 'https://github.com/lifepillar/vim-mucomplete.git/' 'vim-mu
 [start/vim-ps1]
 checkout = git clone 'https://github.com/PProvost/vim-ps1.git' 'vim-ps1'
 
-
-
 [start/vim-nftables]
 checkout = git clone 'https://github.com/nfnty/vim-nftables.git/' 'vim-nftables'
-
 
 [start/ale]
 checkout = git clone 'https://github.com/dense-analysis/ale.git/' 'ale'
