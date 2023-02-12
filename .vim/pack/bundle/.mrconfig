@@ -187,3 +187,6 @@ checkout = git clone 'https://github.com/dense-analysis/ale.git/' 'ale'
 
 [start/splitjoin.vim]
 checkout = git clone 'https://github.com/andrewradev/splitjoin.vim.git/' 'splitjoin.vim'
+
+[start/vim-qf]
+checkout = git clone 'https://github.com/romainl/vim-qf.git/' 'vim-qf'
